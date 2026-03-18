@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>WindowContainer窗口层级-2-构建流程 | 我的博客</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    
+    <meta name="description" content="XXX">
+    
+    <link rel="preload" href="/biubiubiuBlog/assets/css/0.styles.74b8b9fa.css" as="style"><link rel="preload" href="/biubiubiuBlog/assets/js/app.20a7e9f3.js" as="script"><link rel="preload" href="/biubiubiuBlog/assets/js/7.e43da086.js" as="script"><link rel="preload" href="/biubiubiuBlog/assets/js/2.dabce1ab.js" as="script"><link rel="preload" href="/biubiubiuBlog/assets/js/1.219a1c74.js" as="script"><link rel="preload" href="/biubiubiuBlog/assets/js/31.0351593a.js" as="script"><link rel="prefetch" href="/biubiubiuBlog/assets/js/10.a2c8c2ad.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/11.b317b399.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/14.a8685819.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/15.34995a27.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/16.657e3a6c.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/17.7e908d25.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/18.30d05276.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/19.c402f836.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/20.b205bf55.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/21.7d8428b9.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/22.3edf63ed.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/23.19c52a59.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/24.efab5784.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/25.45d9d57a.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/26.e26385d4.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/27.bbf396de.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/28.f0265402.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/29.9cb2e969.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/3.93987c94.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/30.a3f75ffd.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/32.ac4f24d6.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/33.20f6c60e.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/34.ffbed1f8.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/35.e04be348.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/36.11343c2a.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/37.d33d264a.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/38.28f224a6.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/39.9bcc7b8a.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/4.134a9152.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/40.0b44b1a3.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/41.66fb2e32.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/42.a117af30.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/43.137bde8b.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/44.2ae3bd40.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/45.23c5826c.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/46.4a10441e.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/47.ada825f7.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/48.ab5a67ef.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/49.76f3b9bb.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/5.112a4397.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/50.0dc34eb1.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/51.61a86ddf.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/52.156c7f72.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/53.9e20d1af.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/54.04b2a81f.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/55.09a2b985.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/56.568cf4bf.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/57.b386ec7e.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/58.4f68e64b.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/59.9dd52e9f.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/6.19bc117c.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/60.51007a41.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/61.648828dc.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/62.0f298cec.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/63.cb6a2f42.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/64.2b875f4f.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/65.53607183.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/66.b2bc5f84.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/67.b8a149e4.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/68.63e2b145.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/69.e34896f0.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/70.dea15f2f.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/71.c0d20e7e.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/72.173c8996.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/73.91ada282.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/74.264c6bb4.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/75.259de44d.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/76.4706f61a.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/77.6ea598ad.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/78.ff6d9b67.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/79.5eae00f8.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/8.f2b8f4f5.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/80.1cf63ee5.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/81.8c89ba44.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/82.9a597eec.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/83.feb964eb.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/84.50439d79.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/85.e6b8eb6f.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/86.8025dcd2.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/87.92e54992.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/88.9f0855f2.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/89.a733d5ac.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/9.82d58b74.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/vendors~docsearch.8d482cdd.js">
+    <link rel="stylesheet" href="/biubiubiuBlog/assets/css/0.styles.74b8b9fa.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-7dd95ae2><div data-v-7dd95ae2><div class="password-shadow password-wrapper-out" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>我的博客</h3> <p class="description" data-v-59e6cb88>XXX</p> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><!---->
+          
+        <!---->
+        2026
+      </a></span></div></div> <div class="hide" data-v-7dd95ae2><header class="navbar" data-v-7dd95ae2><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/biubiubiuBlog/" class="home-link router-link-active"><!----> <span class="site-name">我的博客</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/biubiubiuBlog/" class="nav-link"><i class="iconfont reco-home"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/AMS/" class="nav-link"><i class="undefined"></i>
+  AMS
+</a></li><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/Activity生命周期/" class="nav-link"><i class="undefined"></i>
+  Activity生命周期
+</a></li><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/Activity启动流程/" class="nav-link"><i class="undefined"></i>
+  Activity启动流程
+</a></li><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/动画/" class="nav-link"><i class="undefined"></i>
+  动画
+</a></li><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/AppTransition/" class="nav-link"><i class="undefined"></i>
+  AppTransition
+</a></li><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/ShellTransitions/" class="nav-link"><i class="undefined"></i>
+  ShellTransitions
+</a></li><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/SurfaceFlinger/" class="nav-link"><i class="undefined"></i>
+  SurfaceFlinger
+</a></li><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/Surface/" class="nav-link"><i class="undefined"></i>
+  Surface
+</a></li><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/VSync/" class="nav-link"><i class="undefined"></i>
+  VSync
+</a></li><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/WMS/" class="nav-link"><i class="undefined"></i>
+  WMS
+</a></li><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/窗口显示/" class="nav-link"><i class="undefined"></i>
+  窗口显示
+</a></li></ul></div></div><div class="nav-item"><a href="/biubiubiuBlog/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/biubiubiuBlog/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间轴
+</a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-7dd95ae2></div> <aside class="sidebar" data-v-7dd95ae2><div class="personal-info-wrapper" data-v-1fad0c41 data-v-7dd95ae2><!----> <!----> <div class="num" data-v-1fad0c41><div data-v-1fad0c41><h3 data-v-1fad0c41>51</h3> <h6 data-v-1fad0c41>文章</h6></div> <div data-v-1fad0c41><h3 data-v-1fad0c41>11</h3> <h6 data-v-1fad0c41>标签</h6></div></div> <ul class="social-links" data-v-1fad0c41></ul> <hr data-v-1fad0c41></div> <nav class="nav-links"><div class="nav-item"><a href="/biubiubiuBlog/" class="nav-link"><i class="iconfont reco-home"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/AMS/" class="nav-link"><i class="undefined"></i>
+  AMS
+</a></li><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/Activity生命周期/" class="nav-link"><i class="undefined"></i>
+  Activity生命周期
+</a></li><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/Activity启动流程/" class="nav-link"><i class="undefined"></i>
+  Activity启动流程
+</a></li><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/动画/" class="nav-link"><i class="undefined"></i>
+  动画
+</a></li><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/AppTransition/" class="nav-link"><i class="undefined"></i>
+  AppTransition
+</a></li><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/ShellTransitions/" class="nav-link"><i class="undefined"></i>
+  ShellTransitions
+</a></li><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/SurfaceFlinger/" class="nav-link"><i class="undefined"></i>
+  SurfaceFlinger
+</a></li><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/Surface/" class="nav-link"><i class="undefined"></i>
+  Surface
+</a></li><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/VSync/" class="nav-link"><i class="undefined"></i>
+  VSync
+</a></li><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/WMS/" class="nav-link"><i class="undefined"></i>
+  WMS
+</a></li><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/窗口显示/" class="nav-link"><i class="undefined"></i>
+  窗口显示
+</a></li></ul></div></div><div class="nav-item"><a href="/biubiubiuBlog/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/biubiubiuBlog/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间轴
+</a></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>WindowContainer窗口层级-2-构建流程</h3> <!----> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><!---->
+          
+        <!---->
+        2026
+      </a></span></div></div> <div data-v-7dd95ae2><div data-v-7dd95ae2><main class="page"><section style="display:;"><div class="page-title"><h1 class="title">WindowContainer窗口层级-2-构建流程</h1> <div data-v-8a445198><i class="iconfont reco-account" data-v-8a445198><span data-v-8a445198>biubiubiu</span></i> <i class="iconfont reco-date" data-v-8a445198><span data-v-8a445198>2026/1/22</span></i> <!----> <i class="tags iconfont reco-tag" data-v-8a445198><span class="tag-item" data-v-8a445198>WMS</span></i></div></div> <div class="theme-reco-content content__default"><h1 id="_1-dump内容的打印"><a href="#_1-dump内容的打印" class="header-anchor">#</a> 1. dump内容的打印</h1> <div class="language-java extra-class"><pre class="language-java"><code># <span class="token class-name">WindowManagerService</span>
+    <span class="token class-name">RootWindowContainer</span> mRoot<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">doDump</span><span class="token punctuation">(</span><span class="token class-name">FileDescriptor</span> fd<span class="token punctuation">,</span> <span class="token class-name">PrintWriter</span> pw<span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">,</span> <span class="token keyword">boolean</span> useProto<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+            <span class="token comment">// containers</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">&quot;containers&quot;</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>cmd<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">synchronized</span> <span class="token punctuation">(</span>mGlobalLock<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    mRoot<span class="token punctuation">.</span><span class="token function">dumpChildrenNames</span><span class="token punctuation">(</span>pw<span class="token punctuation">,</span> <span class="token string">&quot; &quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    pw<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot; &quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    mRoot<span class="token punctuation">.</span><span class="token function">forAllWindows</span><span class="token punctuation">(</span>w <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>pw<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>w<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token boolean">true</span> <span class="token comment">/* traverseTopToBottom */</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token keyword">return</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">&quot;trace&quot;</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>cmd<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">//  打印的name</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token class-name">String</span> <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">&quot;ROOT&quot;</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre></div><p>dumpChildrenNames 的实现在 WindowContainer 的父类 ConfigurationContainer 中</p> <div class="language-java extra-class"><pre class="language-java"><code># <span class="token class-name">ConfigurationContainer</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">dumpChildrenNames</span><span class="token punctuation">(</span><span class="token class-name">PrintWriter</span> pw<span class="token punctuation">,</span> <span class="token class-name">String</span> prefix<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">final</span> <span class="token class-name">String</span> childPrefix <span class="token operator">=</span> prefix <span class="token operator">+</span> <span class="token string">&quot; &quot;</span><span class="token punctuation">;</span>
+        pw<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token operator">+</span> <span class="token string">&quot; type=&quot;</span> <span class="token operator">+</span> <span class="token function">activityTypeToString</span><span class="token punctuation">(</span><span class="token function">getActivityType</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token operator">+</span> <span class="token string">&quot; mode=&quot;</span> <span class="token operator">+</span> <span class="token function">windowingModeToString</span><span class="token punctuation">(</span><span class="token function">getWindowingMode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token operator">+</span> <span class="token string">&quot; override-mode=&quot;</span> <span class="token operator">+</span> <span class="token function">windowingModeToString</span><span class="token punctuation">(</span><span class="token function">getRequestedOverrideWindowingMode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token operator">+</span> <span class="token string">&quot; requested-bounds=&quot;</span> <span class="token operator">+</span> <span class="token function">getRequestedOverrideBounds</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toShortString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token operator">+</span> <span class="token string">&quot; bounds=&quot;</span> <span class="token operator">+</span> <span class="token function">getBounds</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toShortString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token function">getChildCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token operator">--</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">final</span> <span class="token class-name">E</span> cc <span class="token operator">=</span> <span class="token function">getChildAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">// 打印 # 加角标</span>
+            pw<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>childPrefix <span class="token operator">+</span> <span class="token string">&quot;#&quot;</span> <span class="token operator">+</span> i <span class="token operator">+</span> <span class="token string">&quot; &quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            cc<span class="token punctuation">.</span><span class="token function">dumpChildrenNames</span><span class="token punctuation">(</span>pw<span class="token punctuation">,</span> childPrefix<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre></div><p>可以看到从 RootWindowContainer 开始递归打印。 这也就是 dump 到的窗口容器层级树的内容。比如最开始的 RootWindowContainer::getName 返回的内容就是 “ROOT”。</p> <h1 id="_2-层级树的构建"><a href="#_2-层级树的构建" class="header-anchor">#</a> 2. 层级树的构建</h1> <h2 id="_2-1-调用链"><a href="#_2-1-调用链" class="header-anchor">#</a> 2.1 调用链</h2> <div class="language-java extra-class"><pre class="language-java"><code><span class="token class-name">SystemServer</span><span class="token operator">::</span><span class="token function">run</span>
+    <span class="token class-name">SystemServer</span><span class="token operator">::</span><span class="token function">startOtherServices</span>
+        <span class="token class-name">WindowManagerService</span><span class="token operator">::</span><span class="token function">init</span>
+        <span class="token class-name">ActivityManagerService</span><span class="token operator">::</span><span class="token function">setWindowManager</span>
+            <span class="token class-name">ActivityTaskManagerService</span><span class="token operator">::</span><span class="token function">setWindowManager</span>
+                <span class="token class-name">RootWindowContainer</span><span class="token operator">::</span><span class="token function">setWindowManager</span>
+                    <span class="token class-name">DisplayContent</span><span class="token operator">::</span><span class="token function">init</span>
+                        <span class="token class-name">DisplayContent</span><span class="token operator">::</span><span class="token function">configureSurfaces</span>
+                            <span class="token class-name">DisplayAreaPolicy<span class="token punctuation">.</span>Provider</span><span class="token operator">::</span><span class="token function">instantiate</span>  <span class="token operator">--</span> 创建 <span class="token class-name">DefaultTaskDisplayArea</span>和输入法容器
+                                <span class="token class-name">DisplayAreaPolicy<span class="token punctuation">.</span>Provider</span><span class="token operator">::</span><span class="token function">configureTrustedHierarchyBuilder</span> <span class="token operator">--</span> 开始配置图层的<span class="token class-name">Feature</span>
+                                <span class="token class-name">DisplayAreaPolicyBuilder</span><span class="token operator">::</span><span class="token function">build</span>
+                                    <span class="token class-name">PendingArea</span><span class="token operator">::</span><span class="token function">instantiateChildren</span>  <span class="token operator">--</span> 开始递归构建层级树
+                                    <span class="token class-name">RootDisplayArea</span><span class="token operator">::</span><span class="token function">onHierarchyBuilt</span> <span class="token operator">--</span> 构建完成
+</code></pre></div><h2 id="_2-2-前期的一些调用链"><a href="#_2-2-前期的一些调用链" class="header-anchor">#</a> 2.2 前期的一些调用链</h2> <p>调用链前面这段可以知道，在系统启动的时候就触发了这段逻辑，这也就是为什么刚进入 launcher 就可以 dump 出整个结构树的原因。
+setWindowManager 方法传递的参数是 WMS ， WMS 的启动是 startOtherServices 中，而 RootWindowContainer 则是 WMS 的一个成员变量， RootWindowContainer 是层级树中的跟容器，在 WMS 构建函数中创建。</p> <div class="language-java extra-class"><pre class="language-java"><code># <span class="token class-name">WindowManagerService</span>
+    <span class="token comment">// The root of the device window hierarchy.</span>
+    <span class="token class-name">RootWindowContainer</span> mRoot<span class="token punctuation">;</span>
+    <span class="token comment">// WMS构造函数</span>
+    <span class="token keyword">private</span> <span class="token class-name">WindowManagerService</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+        mRoot <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RootWindowContainer</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token punctuation">}</span>
+</code></pre></div><p>继续看构建流程。</p> <div class="language-java extra-class"><pre class="language-java"><code># <span class="token class-name">RootWindowContainer</span>
+    <span class="token keyword">void</span> <span class="token function">setWindowManager</span><span class="token punctuation">(</span><span class="token class-name">WindowManagerService</span> wm<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        mWindowManager <span class="token operator">=</span> wm<span class="token punctuation">;</span>
+        mDisplayManager <span class="token operator">=</span> mService<span class="token punctuation">.</span>mContext<span class="token punctuation">.</span><span class="token function">getSystemService</span><span class="token punctuation">(</span><span class="token class-name">DisplayManager</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mDisplayManager<span class="token punctuation">.</span><span class="token function">registerDisplayListener</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> mService<span class="token punctuation">.</span>mUiHandler<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mDisplayManagerInternal <span class="token operator">=</span> <span class="token class-name">LocalServices</span><span class="token punctuation">.</span><span class="token function">getService</span><span class="token punctuation">(</span><span class="token class-name">DisplayManagerInternal</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">final</span> <span class="token class-name">Display</span><span class="token punctuation">[</span><span class="token punctuation">]</span> displays <span class="token operator">=</span> mDisplayManager<span class="token punctuation">.</span><span class="token function">getDisplays</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//  遍历每个屏幕</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> displayNdx <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> displayNdx <span class="token operator">&lt;</span> displays<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>displayNdx<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">final</span> <span class="token class-name">Display</span> display <span class="token operator">=</span> displays<span class="token punctuation">[</span>displayNdx<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token comment">// 重点*1：为每一个 Display 挂载一个 DisplayContent 节点</span>
+            <span class="token keyword">final</span> <span class="token class-name">DisplayContent</span> displayContent <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DisplayContent</span><span class="token punctuation">(</span>display<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">addChild</span><span class="token punctuation">(</span>displayContent<span class="token punctuation">,</span> <span class="token constant">POSITION_BOTTOM</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>displayContent<span class="token punctuation">.</span>mDisplayId <span class="token operator">==</span> <span class="token constant">DEFAULT_DISPLAY</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                mDefaultDisplay <span class="token operator">=</span> displayContent<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    
+        <span class="token comment">// 重点*2  TaskDisplayArea 相关</span>
+        <span class="token keyword">final</span> <span class="token class-name">TaskDisplayArea</span> defaultTaskDisplayArea <span class="token operator">=</span> <span class="token function">getDefaultTaskDisplayArea</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        defaultTaskDisplayArea<span class="token punctuation">.</span><span class="token function">getOrCreateRootHomeTask</span><span class="token punctuation">(</span><span class="token constant">ON_TOP</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">positionChildAt</span><span class="token punctuation">(</span><span class="token constant">POSITION_TOP</span><span class="token punctuation">,</span> defaultTaskDisplayArea<span class="token punctuation">.</span>mDisplayContent<span class="token punctuation">,</span>
+                <span class="token boolean">false</span> <span class="token comment">/* includingParents */</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre></div><p>重点解析：</p> <ul><li><ol><li>这段代码也就能看出，为什么说一个 DisplayContent 就代表着1个屏幕了。</li></ol></li> <li><ol start="2"><li>处理 TaskDisplayArea 相关（这里窗口层级树已经构建完成了）</li></ol></li></ul> <p>上篇看层级树知道 TaskDisplayArea 就是放应用相关容器的，目前先不看这块，先跟踪 DisplayContent 下的逻辑， 现在需要看 DisplayContent 的构造方法，因为里面开始构造这个屏幕下层级树。（不考虑多屏幕的情况）</p> <h1 id="_3-displaycontent-开始构造当前屏幕的层级树"><a href="#_3-displaycontent-开始构造当前屏幕的层级树" class="header-anchor">#</a> 3. DisplayContent 开始构造当前屏幕的层级树</h1> <div class="language-java extra-class"><pre class="language-java"><code># <span class="token class-name">DisplayContent</span>
+    <span class="token comment">// 2个参数为Display和跟容器</span>
+    <span class="token class-name">DisplayContent</span><span class="token punctuation">(</span><span class="token class-name">Display</span> display<span class="token punctuation">,</span> <span class="token class-name">RootWindowContainer</span> root<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+        <span class="token comment">// 创建 SF 事务</span>
+        <span class="token keyword">final</span> <span class="token class-name">Transaction</span> pendingTransaction <span class="token operator">=</span> <span class="token function">getPendingTransaction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 构建层级树</span>
+        <span class="token function">configureSurfaces</span><span class="token punctuation">(</span>pendingTransaction<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 执行事</span>
+        pendingTransaction<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">configureSurfaces</span><span class="token punctuation">(</span><span class="token class-name">Transaction</span> transaction<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 构建一个SurfaceControl</span>
+        <span class="token keyword">final</span> <span class="token class-name">SurfaceControl<span class="token punctuation">.</span>Builder</span> b <span class="token operator">=</span> mWmService<span class="token punctuation">.</span><span class="token function">makeSurfaceBuilder</span><span class="token punctuation">(</span>mSession<span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">setOpaque</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">setContainerLayer</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">setCallsite</span><span class="token punctuation">(</span><span class="token string">&quot;DisplayContent&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 设置名字后构建 （Display 0 name=&quot;XXX&quot;）</span>
+        mSurfaceControl <span class="token operator">=</span> b<span class="token punctuation">.</span><span class="token function">setName</span><span class="token punctuation">(</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setContainerLayer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 重点* 设置策略并构建显示区域层次结构</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>mDisplayAreaPolicy <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">// WMS的getDisplayAreaPolicyProvider方法按返回 DisplayAreaPolicy.Provider</span>
+            <span class="token comment">// 然后其 instantiate的实现 目前只有DisplayAreaPolicy的内部类DefaultProvider</span>
+            
+            mDisplayAreaPolicy <span class="token operator">=</span> mWmService<span class="token punctuation">.</span><span class="token function">getDisplayAreaPolicyProvider</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">instantiate</span><span class="token punctuation">(</span>
+                    mWmService<span class="token punctuation">,</span> <span class="token keyword">this</span> <span class="token comment">/* content */</span><span class="token punctuation">,</span> <span class="token keyword">this</span> <span class="token comment">/* root */</span><span class="token punctuation">,</span>
+                    mImeWindowsContainer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment">// 事务相关设置</span>
+        transaction
+                <span class="token punctuation">.</span><span class="token function">setLayer</span><span class="token punctuation">(</span>mSurfaceControl<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">setLayerStack</span><span class="token punctuation">(</span>mSurfaceControl<span class="token punctuation">,</span> mDisplayId<span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span>mSurfaceControl<span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">setLayer</span><span class="token punctuation">(</span>mOverlayLayer<span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token constant">MAX_VALUE</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span>mOverlayLayer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre></div><p>这一块我们目前可以忽略transaction的代码只需要关心中间“getDisplayAreaPolicyProvider”这一块就好了，这段是层级树的主流程。</p> <p>tips:</p> <ul><li><ol><li>方法最开始的 setName 设置 name 在层级树是能找到对应名字的</li></ol></li> <li><ol start="2"><li>注意 instantiate 倒数第 3 第 4 都个参数传递的都是 this ，也就是 DisplayContent， 因为 DisplayContent 这是的父类是 RootDisplayArea</li></ol></li></ul> <div class="language-java extra-class"><pre class="language-java"><code># <span class="token class-name">DisplayContent</span>
+    <span class="token class-name">String</span> <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">&quot;Display &quot;</span> <span class="token operator">+</span> mDisplayId <span class="token operator">+</span> <span class="token string">&quot; name=\&quot;&quot;</span> <span class="token operator">+</span> mDisplayInfo<span class="token punctuation">.</span>name <span class="token operator">+</span> <span class="token string">&quot;\&quot;&quot;</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre></div><p>mDisplayId 如果只有一个屏幕就是 0 ，所以 dump 到层级树中的这句信息</p> <div class="language-java extra-class"><pre class="language-java"><code>  #<span class="token number">0</span> <span class="token class-name">Display</span> <span class="token number">0</span> name<span class="token operator">=</span><span class="token string">&quot;Built-in Screen&quot;</span>
+</code></pre></div><p>就是在这里设置的，后面的&quot;Built-in Screen&quot;对应的应该就是 mDisplayInfo.name 了。
+接下来继续看主流程：</p> <div class="language-java extra-class"><pre class="language-java"><code># <span class="token class-name">WindowManagerService</span>
+
+    <span class="token comment">// 屏幕策略提供类</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">DisplayAreaPolicy<span class="token punctuation">.</span>Provider</span> mDisplayAreaPolicyProvider<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">WindowManagerService</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+        <span class="token comment">// 在这里获取</span>
+        mDisplayAreaPolicyProvider <span class="token operator">=</span> <span class="token class-name">DisplayAreaPolicy<span class="token punctuation">.</span>Provider</span><span class="token punctuation">.</span><span class="token function">fromResources</span><span class="token punctuation">(</span>
+                mContext<span class="token punctuation">.</span><span class="token function">getResources</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token punctuation">}</span>
+
+</code></pre></div><p>默认是返回的是 <strong>DisplayAreaPolicy.DefaultProvider</strong>，如果需要客制化自己的窗口层级，则可以在这里返回自己的 Provider 。</p> <p>继续分析默认逻辑，在 DisplayAreaPolicy::instantiate</p> <div class="language-java extra-class"><pre class="language-java"><code># <span class="token class-name">DisplayAreaPolicy<span class="token punctuation">.</span>Provider</span>
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token class-name">DisplayAreaPolicy</span> <span class="token function">instantiate</span><span class="token punctuation">(</span><span class="token class-name">WindowManagerService</span> wmService<span class="token punctuation">,</span>
+                <span class="token class-name">DisplayContent</span> content<span class="token punctuation">,</span> <span class="token class-name">RootDisplayArea</span> root<span class="token punctuation">,</span>
+                <span class="token class-name">DisplayArea<span class="token punctuation">.</span>Tokens</span> imeContainer<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+            <span class="token comment">// 重点*1. 创建一个名为 &quot;DefaultTaskDisplayArea&quot; 的对象作为应用窗口的默认容器（第三个参数Feature为FEATURE_DEFAULT_TASK_CONTAINER）</span>
+            <span class="token keyword">final</span> <span class="token class-name">TaskDisplayArea</span> defaultTaskDisplayArea <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TaskDisplayArea</span><span class="token punctuation">(</span>content<span class="token punctuation">,</span> wmService<span class="token punctuation">,</span>
+                    <span class="token string">&quot;DefaultTaskDisplayArea&quot;</span><span class="token punctuation">,</span> <span class="token constant">FEATURE_DEFAULT_TASK_CONTAINER</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">final</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">TaskDisplayArea</span><span class="token punctuation">&gt;</span></span> tdaList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">//  实际上只有1个元素</span>
+            tdaList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>defaultTaskDisplayArea<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment">// Define the features that will be supported under the root of the whole logical</span>
+            <span class="token comment">// display. The policy will build the DisplayArea hierarchy based on this.</span>
+            <span class="token comment">// 传递RootDisplayArea（DisplayContent）构建出一个层级树的数据结构</span>
+            <span class="token keyword">final</span> <span class="token class-name">HierarchyBuilder</span> rootHierarchy <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HierarchyBuilder</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">// Set the essential containers (even if the display doesn't support IME).</span>
+            <span class="token comment">// 设置输入法容器</span>
+            rootHierarchy<span class="token punctuation">.</span><span class="token function">setImeContainer</span><span class="token punctuation">(</span>imeContainer<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setTaskDisplayAreas</span><span class="token punctuation">(</span>tdaList<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment">// 这个条件满足，肯定是被信任的</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>content<span class="token punctuation">.</span><span class="token function">isTrusted</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment">// 重点* 2 配置层级的支持的Feature</span>
+                <span class="token function">configureTrustedHierarchyBuilder</span><span class="token punctuation">(</span>rootHierarchy<span class="token punctuation">,</span> wmService<span class="token punctuation">,</span> content<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token comment">// Instantiate the policy with the hierarchy defined above. This will create and attach</span>
+            <span class="token comment">// all the necessary DisplayAreas to the root.</span>
+            <span class="token comment">// 重点* 3 真正开始构建层级树</span>
+            <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">DisplayAreaPolicyBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setRootHierarchy</span><span class="token punctuation">(</span>rootHierarchy<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span>wmService<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+</code></pre></div><p>这个方法是在 DisplayContent 构造函数掉进来的，注意最后 2 个参数，root 表示跟容器，imeContainer 则是输入法容器，在 DisplayContent 中传过来的，然后被通过 setImeContainer 设置给了 HierarchyBuilder 。
+重点分析：</p> <ul><li><ol><li>&quot;DefaultTaskDisplayArea&quot; 终于出现了， 可以看到确实是 TaskDisplayArea 对象，然后 FEATURE_DEFAULT_TASK_CONTAINER 这个 ID 的值就是 1 ， 那也就是在第 2 层,和层级树是对应的，然后构建了一个 <code>List&lt;TaskDisplayArea&gt;</code> ，但是这个集合就这一个元素。</li></ol></li> <li><ol start="2"><li>配置层级的支持的 Feature</li></ol></li> <li><ol start="3"><li>开始真正的构建</li></ol></li></ul> <h2 id="_3-1-配置-feature"><a href="#_3-1-配置-feature" class="header-anchor">#</a> 3.1 配置 Feature</h2> <p>发现层级树中一共就出现了5个Feature就是在当前方法中配置的，分别如下：
+WindowedMagnification
+HideDisplayCutout
+OneHanded
+FullscreenMagnification
+ImePlaceholder</p> <div class="language-java extra-class"><pre class="language-java"><code># <span class="token class-name">DisplayAreaPolicy<span class="token punctuation">.</span>Provider</span>
+
+        <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">configureTrustedHierarchyBuilder</span><span class="token punctuation">(</span><span class="token class-name">HierarchyBuilder</span> rootHierarchy<span class="token punctuation">,</span>
+                <span class="token class-name">WindowManagerService</span> wmService<span class="token punctuation">,</span> <span class="token class-name">DisplayContent</span> content<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">// WindowedMagnification should be on the top so that there is only one surface</span>
+            <span class="token comment">// to be magnified.</span>
+            rootHierarchy<span class="token punctuation">.</span><span class="token function">addFeature</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Feature<span class="token punctuation">.</span>Builder</span><span class="token punctuation">(</span>wmService<span class="token punctuation">.</span>mPolicy<span class="token punctuation">,</span> <span class="token string">&quot;WindowedMagnification&quot;</span><span class="token punctuation">,</span>
+                    <span class="token constant">FEATURE_WINDOWED_MAGNIFICATION</span><span class="token punctuation">)</span>
+                    <span class="token punctuation">.</span><span class="token function">upTo</span><span class="token punctuation">(</span><span class="token constant">TYPE_ACCESSIBILITY_MAGNIFICATION_OVERLAY</span><span class="token punctuation">)</span>
+                    <span class="token punctuation">.</span><span class="token function">except</span><span class="token punctuation">(</span><span class="token constant">TYPE_ACCESSIBILITY_MAGNIFICATION_OVERLAY</span><span class="token punctuation">)</span>
+                    <span class="token comment">// Make the DA dimmable so that the magnify window also mirrors the dim layer.</span>
+                    <span class="token punctuation">.</span><span class="token function">setNewDisplayAreaSupplier</span><span class="token punctuation">(</span><span class="token class-name">DisplayArea<span class="token punctuation">.</span>Dimmable</span><span class="token operator">::</span><span class="token keyword">new</span><span class="token punctuation">)</span>
+                    <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>content<span class="token punctuation">.</span>isDefaultDisplay<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment">// Only default display can have cutout.</span>
+                <span class="token comment">// See LocalDisplayAdapter.LocalDisplayDevice#getDisplayDeviceInfoLocked.</span>
+                rootHierarchy<span class="token punctuation">.</span><span class="token function">addFeature</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Feature<span class="token punctuation">.</span>Builder</span><span class="token punctuation">(</span>wmService<span class="token punctuation">.</span>mPolicy<span class="token punctuation">,</span> <span class="token string">&quot;HideDisplayCutout&quot;</span><span class="token punctuation">,</span>
+                        <span class="token constant">FEATURE_HIDE_DISPLAY_CUTOUT</span><span class="token punctuation">)</span>
+                        <span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                        <span class="token punctuation">.</span><span class="token function">except</span><span class="token punctuation">(</span><span class="token constant">TYPE_NAVIGATION_BAR</span><span class="token punctuation">,</span> <span class="token constant">TYPE_NAVIGATION_BAR_PANEL</span><span class="token punctuation">,</span> <span class="token constant">TYPE_STATUS_BAR</span><span class="token punctuation">,</span>
+                                <span class="token constant">TYPE_NOTIFICATION_SHADE</span><span class="token punctuation">)</span>
+                        <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                        <span class="token punctuation">.</span><span class="token function">addFeature</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Feature<span class="token punctuation">.</span>Builder</span><span class="token punctuation">(</span>wmService<span class="token punctuation">.</span>mPolicy<span class="token punctuation">,</span> <span class="token string">&quot;OneHanded&quot;</span><span class="token punctuation">,</span>
+                                <span class="token constant">FEATURE_ONE_HANDED</span><span class="token punctuation">)</span>
+                                <span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                                <span class="token punctuation">.</span><span class="token function">except</span><span class="token punctuation">(</span><span class="token constant">TYPE_NAVIGATION_BAR</span><span class="token punctuation">,</span> <span class="token constant">TYPE_NAVIGATION_BAR_PANEL</span><span class="token punctuation">,</span>
+                                        <span class="token constant">TYPE_SECURE_SYSTEM_OVERLAY</span><span class="token punctuation">)</span>
+                                <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            rootHierarchy
+                    <span class="token punctuation">.</span><span class="token function">addFeature</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Feature<span class="token punctuation">.</span>Builder</span><span class="token punctuation">(</span>wmService<span class="token punctuation">.</span>mPolicy<span class="token punctuation">,</span> <span class="token string">&quot;FullscreenMagnification&quot;</span><span class="token punctuation">,</span>
+                            <span class="token constant">FEATURE_FULLSCREEN_MAGNIFICATION</span><span class="token punctuation">)</span>
+                            <span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                            <span class="token punctuation">.</span><span class="token function">except</span><span class="token punctuation">(</span><span class="token constant">TYPE_ACCESSIBILITY_MAGNIFICATION_OVERLAY</span><span class="token punctuation">,</span> <span class="token constant">TYPE_INPUT_METHOD</span><span class="token punctuation">,</span>
+                                    <span class="token constant">TYPE_INPUT_METHOD_DIALOG</span><span class="token punctuation">,</span> <span class="token constant">TYPE_MAGNIFICATION_OVERLAY</span><span class="token punctuation">,</span>
+                                    <span class="token constant">TYPE_NAVIGATION_BAR</span><span class="token punctuation">,</span> <span class="token constant">TYPE_NAVIGATION_BAR_PANEL</span><span class="token punctuation">)</span>
+                            <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                    <span class="token punctuation">.</span><span class="token function">addFeature</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Feature<span class="token punctuation">.</span>Builder</span><span class="token punctuation">(</span>wmService<span class="token punctuation">.</span>mPolicy<span class="token punctuation">,</span> <span class="token string">&quot;ImePlaceholder&quot;</span><span class="token punctuation">,</span>
+                            <span class="token constant">FEATURE_IME_PLACEHOLDER</span><span class="token punctuation">)</span>
+                            <span class="token punctuation">.</span><span class="token function">and</span><span class="token punctuation">(</span><span class="token constant">TYPE_INPUT_METHOD</span><span class="token punctuation">,</span> <span class="token constant">TYPE_INPUT_METHOD_DIALOG</span><span class="token punctuation">)</span>
+                            <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre></div><p>这里执行了5次 addFeature ，每次对应一个 Feature 刚好是 5 个。 Feature.Builder 构造一个 Feature 对象，代码如下:</p> <div class="language-java extra-class"><pre class="language-java"><code># <span class="token class-name">DisplayAreaPolicy<span class="token punctuation">.</span>Feature<span class="token punctuation">.</span>Builder</span>
+            <span class="token class-name">Builder</span><span class="token punctuation">(</span><span class="token class-name">WindowManagerPolicy</span> policy<span class="token punctuation">,</span> <span class="token class-name">String</span> name<span class="token punctuation">,</span> <span class="token keyword">int</span> id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                mPolicy <span class="token operator">=</span> policy<span class="token punctuation">;</span>
+                mName <span class="token operator">=</span> name<span class="token punctuation">;</span>
+                mId <span class="token operator">=</span> id<span class="token punctuation">;</span>
+                mLayers <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">boolean</span><span class="token punctuation">[</span>mPolicy<span class="token punctuation">.</span><span class="token function">getMaxWindowLayer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+</code></pre></div><p>注意后面 2 个参数，第二个为 name ，就是名字，后面的是 ID ，根据使用的地方肯定是定义了对应 ID 的。
+留意下 mLayers ，mPolicy.getMaxWindowLayer() 返回 36 所以是定义了一个长度为 37 的 boolean 类型数组，如果为 ture 表示这个图层支持这个 Feature ，为 false 反之。</p> <p>5个Feature对应的ID如下，并且有相应的注释：</p> <div class="language-java extra-class"><pre class="language-java"><code># <span class="token class-name">DisplayAreaOrganizer</span>
+    <span class="token comment">/**
+     * Display area that can be magnified in
+     * ......
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> <span class="token constant">FEATURE_WINDOWED_MAGNIFICATION</span> <span class="token operator">=</span> <span class="token constant">FEATURE_SYSTEM_FIRST</span> <span class="token operator">+</span> <span class="token number">4</span><span class="token punctuation">;</span>
+
+    <span class="token comment">/**
+     * Display area for hiding display cutout feature
+     * @hide
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> <span class="token constant">FEATURE_HIDE_DISPLAY_CUTOUT</span> <span class="token operator">=</span> <span class="token constant">FEATURE_SYSTEM_FIRST</span> <span class="token operator">+</span> <span class="token number">6</span><span class="token punctuation">;</span>
+
+    <span class="token comment">/**
+     * Display area for one handed feature
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> <span class="token constant">FEATURE_ONE_HANDED</span> <span class="token operator">=</span> <span class="token constant">FEATURE_SYSTEM_FIRST</span> <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">;</span>
+
+    <span class="token comment">/**
+     * Display area that can be magnified in
+     * ......
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> <span class="token constant">FEATURE_FULLSCREEN_MAGNIFICATION</span> <span class="token operator">=</span> <span class="token constant">FEATURE_SYSTEM_FIRST</span> <span class="token operator">+</span> <span class="token number">5</span><span class="token punctuation">;</span>
+
+    <span class="token comment">/**
+     * Display area that the IME container can be placed in. Should be enabled on every root
+     * hierarchy if IME container may be reparented to that hierarchy when the IME target changed.
+     * @hide
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> <span class="token constant">FEATURE_IME_PLACEHOLDER</span> <span class="token operator">=</span> <span class="token constant">FEATURE_SYSTEM_FIRST</span> <span class="token operator">+</span> <span class="token number">7</span><span class="token punctuation">;</span>
+</code></pre></div><p>根据注释能知道这个 Feature 代表这个图层具体用于什么特征了。</p> <p>然后还看到 all(),and(),except() 等方法。</p> <h3 id="_3-1-1-all-and-except方法"><a href="#_3-1-1-all-and-except方法" class="header-anchor">#</a> 3.1.1 all，and，except方法</h3> <div class="language-java extra-class"><pre class="language-java"><code># <span class="token class-name">DisplayAreaPolicy<span class="token punctuation">.</span>Feature<span class="token punctuation">.</span>Builder</span>
+
+     <span class="token class-name">Builder</span> <span class="token function">all</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span>mLayers<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token class-name">Builder</span> <span class="token function">and</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> types<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> types<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> type <span class="token operator">=</span> types<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token function">set</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token class-name">Builder</span> <span class="token function">except</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> types<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> types<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> type <span class="token operator">=</span> types<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token function">set</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token class-name">Builder</span> <span class="token function">upTo</span><span class="token punctuation">(</span><span class="token keyword">int</span> typeInclusive<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 根据传入的type计算到图层</span>
+        <span class="token keyword">final</span> <span class="token keyword">int</span> max <span class="token operator">=</span> <span class="token function">layerFromType</span><span class="token punctuation">(</span>typeInclusive<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> max<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            mLayers<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token function">set</span><span class="token punctuation">(</span>typeInclusive<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+    
+    <span class="token punctuation">}</span>
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">set</span><span class="token punctuation">(</span><span class="token keyword">int</span> type<span class="token punctuation">,</span> <span class="token keyword">boolean</span> value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        mLayers<span class="token punctuation">[</span><span class="token function">layerFromType</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> value<span class="token punctuation">;</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">int</span> <span class="token function">layerFromType</span><span class="token punctuation">(</span><span class="token keyword">int</span> type<span class="token punctuation">,</span> <span class="token keyword">boolean</span> internalWindows<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> mPolicy<span class="token punctuation">.</span><span class="token function">getWindowLayerFromTypeLw</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> internalWindows<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token class-name">Feature</span> <span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 默认为true</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>mExcludeRoundedCorner<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">// Always put the rounded corner layer to the top most layer.</span>
+            mLayers<span class="token punctuation">[</span>mPolicy<span class="token punctuation">.</span><span class="token function">getMaxWindowLayer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Feature</span><span class="token punctuation">(</span>mName<span class="token punctuation">,</span> mId<span class="token punctuation">,</span> mLayers<span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> mNewDisplayAreaSupplier<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre></div><p>mLayers前面说过是一个长度为 37 的数组, set 方法就是将参数的这个图层，对应的 boolean 设置为 true ， 换句话说就是指定某个图层是否支持这个 Feature。
+<strong>all()</strong>：将所有数组所有值都设为 true ，表示每个图层都支持这个 Feature
+<strong>and()</strong>: 将指定某个图层支持这个 Feature
+<strong>except（）</strong>：将指定某个图层不支持这个 Feature
+<strong>upTo()</strong>: 将支持 Feature 的图层设置为从 0 到 typeInclusive
+<strong>build()</strong>：将数组的最后最后一个设置为 false ，剔除最后一层</p> <p>这里的几个方法都会调用到 layerFromType ，根据 layerFromType 方法的调用知道具体逻辑在 WindowManagerPolicy::getWindowLayerFromTypeLw 方法控制的.
+这段代码有点长是因为好多 case ，但是总体逻辑并不复杂,主要关注传入的 WindowType 和返回的 Layertype ，其实就是返回层级树中所在的图层。</p> <h3 id="_3-1-2-重点-getwindowlayerfromtypelw-方法-决定窗口挂载在那一层"><a href="#_3-1-2-重点-getwindowlayerfromtypelw-方法-决定窗口挂载在那一层" class="header-anchor">#</a> 3.1.2 重点：getWindowLayerFromTypeLw 方法 （决定窗口挂载在那一层）</h3> <div class="language-java extra-class"><pre class="language-java"><code># <span class="token class-name">WindowManagerPolicy</span>
+    <span class="token keyword">default</span> <span class="token keyword">int</span> <span class="token function">getWindowLayerFromTypeLw</span><span class="token punctuation">(</span><span class="token keyword">int</span> type<span class="token punctuation">,</span> <span class="token keyword">boolean</span> canAddInternalSystemWindow<span class="token punctuation">,</span>
+            <span class="token keyword">boolean</span> roundedCornerOverlay<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Always put the rounded corner layer to the top most.</span>
+        <span class="token comment">// 第二个参数为false,这里忽略</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>roundedCornerOverlay <span class="token operator">&amp;&amp;</span> canAddInternalSystemWindow<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token function">getMaxWindowLayer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment">// 根据这2个type名字也知道表示 APP图层，对应的值是1-99，如果处于这直接就返回APPLICATION_LAYER =2</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>type <span class="token operator">&gt;=</span> <span class="token constant">FIRST_APPLICATION_WINDOW</span> <span class="token operator">&amp;&amp;</span> type <span class="token operator">&lt;=</span> <span class="token constant">LAST_APPLICATION_WINDOW</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token constant">APPLICATION_LAYER</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment">// 然后开始根据各个WindowType，去返回其在层级树中所在的图层</span>
+        <span class="token keyword">switch</span> <span class="token punctuation">(</span>type<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">case</span> <span class="token constant">TYPE_WALLPAPER</span><span class="token operator">:</span>
+                <span class="token comment">// wallpaper is at the bottom, though the window manager may move it.</span>
+                <span class="token keyword">return</span>  <span class="token number">1</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token constant">TYPE_PRESENTATION</span><span class="token operator">:</span>
+            <span class="token keyword">case</span> <span class="token constant">TYPE_PRIVATE_PRESENTATION</span><span class="token operator">:</span>
+            <span class="token keyword">case</span> <span class="token constant">TYPE_DOCK_DIVIDER</span><span class="token operator">:</span>
+            <span class="token keyword">case</span> <span class="token constant">TYPE_QS_DIALOG</span><span class="token operator">:</span>
+            <span class="token keyword">case</span> <span class="token constant">TYPE_PHONE</span><span class="token operator">:</span>
+                <span class="token keyword">return</span>  <span class="token number">3</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token constant">TYPE_SEARCH_BAR</span><span class="token operator">:</span>
+                <span class="token keyword">return</span>  <span class="token number">4</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token constant">TYPE_INPUT_CONSUMER</span><span class="token operator">:</span>
+                <span class="token keyword">return</span>  <span class="token number">5</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token constant">TYPE_SYSTEM_DIALOG</span><span class="token operator">:</span>
+                <span class="token keyword">return</span>  <span class="token number">6</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token constant">TYPE_TOAST</span><span class="token operator">:</span>
+                <span class="token comment">// toasts and the plugged-in battery thing</span>
+                <span class="token keyword">return</span>  <span class="token number">7</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token constant">TYPE_PRIORITY_PHONE</span><span class="token operator">:</span>
+                <span class="token comment">// SIM errors and unlock.  Not sure if this really should be in a high layer.</span>
+                <span class="token keyword">return</span>  <span class="token number">8</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token constant">TYPE_SYSTEM_ALERT</span><span class="token operator">:</span>
+                <span class="token comment">// like the ANR / app crashed dialogs</span>
+                <span class="token comment">// Type is deprecated for non-system apps. For system apps, this type should be</span>
+                <span class="token comment">// in a higher layer than TYPE_APPLICATION_OVERLAY.</span>
+                <span class="token keyword">return</span>  canAddInternalSystemWindow <span class="token operator">?</span> <span class="token number">12</span> <span class="token operator">:</span> <span class="token number">9</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token constant">TYPE_APPLICATION_OVERLAY</span><span class="token operator">:</span>
+                <span class="token keyword">return</span>  <span class="token number">11</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token constant">TYPE_INPUT_METHOD</span><span class="token operator">:</span>
+                <span class="token comment">// on-screen keyboards and other such input method user interfaces go here.</span>
+                <span class="token keyword">return</span>  <span class="token number">13</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token constant">TYPE_INPUT_METHOD_DIALOG</span><span class="token operator">:</span>
+                <span class="token comment">// on-screen keyboards and other such input method user interfaces go here.</span>
+                <span class="token keyword">return</span>  <span class="token number">14</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token constant">TYPE_STATUS_BAR</span><span class="token operator">:</span>
+                <span class="token keyword">return</span>  <span class="token number">15</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token constant">TYPE_STATUS_BAR_ADDITIONAL</span><span class="token operator">:</span>
+                <span class="token keyword">return</span>  <span class="token number">16</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token constant">TYPE_NOTIFICATION_SHADE</span><span class="token operator">:</span>
+                <span class="token keyword">return</span>  <span class="token number">17</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token constant">TYPE_STATUS_BAR_SUB_PANEL</span><span class="token operator">:</span>
+                <span class="token keyword">return</span>  <span class="token number">18</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token constant">TYPE_KEYGUARD_DIALOG</span><span class="token operator">:</span>
+                <span class="token keyword">return</span>  <span class="token number">19</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token constant">TYPE_VOICE_INTERACTION_STARTING</span><span class="token operator">:</span>
+                <span class="token keyword">return</span>  <span class="token number">20</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token constant">TYPE_VOICE_INTERACTION</span><span class="token operator">:</span>
+                <span class="token comment">// voice interaction layer should show above the lock screen.</span>
+                <span class="token keyword">return</span>  <span class="token number">21</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token constant">TYPE_VOLUME_OVERLAY</span><span class="token operator">:</span>
+                <span class="token comment">// the on-screen volume indicator and controller shown when the user</span>
+                <span class="token comment">// changes the device volume</span>
+                <span class="token keyword">return</span>  <span class="token number">22</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token constant">TYPE_SYSTEM_OVERLAY</span><span class="token operator">:</span>
+                <span class="token comment">// the on-screen volume indicator and controller shown when the user</span>
+                <span class="token comment">// changes the device volume</span>
+                <span class="token keyword">return</span>  canAddInternalSystemWindow <span class="token operator">?</span> <span class="token number">23</span> <span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token constant">TYPE_NAVIGATION_BAR</span><span class="token operator">:</span>
+                <span class="token comment">// the navigation bar, if available, shows atop most things</span>
+                <span class="token keyword">return</span>  <span class="token number">24</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token constant">TYPE_NAVIGATION_BAR_PANEL</span><span class="token operator">:</span>
+                <span class="token comment">// some panels (e.g. search) need to show on top of the navigation bar</span>
+                <span class="token keyword">return</span>  <span class="token number">25</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token constant">TYPE_SCREENSHOT</span><span class="token operator">:</span>
+                <span class="token comment">// screenshot selection layer shouldn't go above system error, but it should cover</span>
+                <span class="token comment">// navigation bars at the very least.</span>
+                <span class="token keyword">return</span>  <span class="token number">26</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token constant">TYPE_SYSTEM_ERROR</span><span class="token operator">:</span>
+                <span class="token comment">// system-level error dialogs</span>
+                <span class="token keyword">return</span>  canAddInternalSystemWindow <span class="token operator">?</span> <span class="token number">27</span> <span class="token operator">:</span> <span class="token number">9</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token constant">TYPE_MAGNIFICATION_OVERLAY</span><span class="token operator">:</span>
+                <span class="token comment">// used to highlight the magnified portion of a display</span>
+                <span class="token keyword">return</span>  <span class="token number">28</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token constant">TYPE_DISPLAY_OVERLAY</span><span class="token operator">:</span>
+                <span class="token comment">// used to simulate secondary display devices</span>
+                <span class="token keyword">return</span>  <span class="token number">29</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token constant">TYPE_DRAG</span><span class="token operator">:</span>
+                <span class="token comment">// the drag layer: input for drag-and-drop is associated with this window,</span>
+                <span class="token comment">// which sits above all other focusable windows</span>
+                <span class="token keyword">return</span>  <span class="token number">30</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token constant">TYPE_ACCESSIBILITY_OVERLAY</span><span class="token operator">:</span>
+                <span class="token comment">// overlay put by accessibility services to intercept user interaction</span>
+                <span class="token keyword">return</span>  <span class="token number">31</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token constant">TYPE_ACCESSIBILITY_MAGNIFICATION_OVERLAY</span><span class="token operator">:</span>
+                <span class="token keyword">return</span> <span class="token number">32</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token constant">TYPE_SECURE_SYSTEM_OVERLAY</span><span class="token operator">:</span>
+                <span class="token keyword">return</span>  <span class="token number">33</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token constant">TYPE_BOOT_PROGRESS</span><span class="token operator">:</span>
+                <span class="token keyword">return</span>  <span class="token number">34</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token constant">TYPE_POINTER</span><span class="token operator">:</span>
+                <span class="token comment">// the (mouse) pointer layer</span>
+                <span class="token keyword">return</span>  <span class="token number">35</span><span class="token punctuation">;</span>
+            <span class="token keyword">default</span><span class="token operator">:</span>
+                <span class="token class-name">Slog</span><span class="token punctuation">.</span><span class="token function">e</span><span class="token punctuation">(</span><span class="token string">&quot;WindowManager&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Unknown window type: &quot;</span> <span class="token operator">+</span> type<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span> <span class="token number">3</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre></div><p>代码很长不用一个个看，直接根据参数找就好，比如当参数是 TYPE_ACCESSIBILITY_MAGNIFICATION_OVERLAY ，那对应的返回就是 32 。
+后面看到的对应的 TYPE ，直接复制 WindowManagerPolicy 类下搜索即可。</p> <p>现在再重新看看 configureTrustedHierarchyBuilder 方法里5个 Feature 到底是什么。</p> <div class="language-java extra-class"><pre class="language-java"><code># <span class="token class-name">DisplayAreaPolicy<span class="token punctuation">.</span>Provider</span>
+        <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">configureTrustedHierarchyBuilder</span><span class="token punctuation">(</span><span class="token class-name">HierarchyBuilder</span> rootHierarchy<span class="token punctuation">,</span>
+                <span class="token class-name">WindowManagerService</span> wmService<span class="token punctuation">,</span> <span class="token class-name">DisplayContent</span> content<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">// WindowedMagnification should be on the top so that there is only one surface</span>
+            <span class="token comment">// to be magnified.</span>
+            rootHierarchy<span class="token punctuation">.</span><span class="token function">addFeature</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Feature<span class="token punctuation">.</span>Builder</span><span class="token punctuation">(</span>wmService<span class="token punctuation">.</span>mPolicy<span class="token punctuation">,</span> <span class="token string">&quot;WindowedMagnification&quot;</span><span class="token punctuation">,</span>
+                    <span class="token constant">FEATURE_WINDOWED_MAGNIFICATION</span><span class="token punctuation">)</span>
+                    <span class="token punctuation">.</span><span class="token function">upTo</span><span class="token punctuation">(</span><span class="token constant">TYPE_ACCESSIBILITY_MAGNIFICATION_OVERLAY</span><span class="token punctuation">)</span> <span class="token comment">// 0-32</span>
+                    <span class="token punctuation">.</span><span class="token function">except</span><span class="token punctuation">(</span><span class="token constant">TYPE_ACCESSIBILITY_MAGNIFICATION_OVERLAY</span><span class="token punctuation">)</span><span class="token comment">// 32</span>
+                    <span class="token comment">// Make the DA dimmable so that the magnify window also mirrors the dim layer.</span>
+                    <span class="token punctuation">.</span><span class="token function">setNewDisplayAreaSupplier</span><span class="token punctuation">(</span><span class="token class-name">DisplayArea<span class="token punctuation">.</span>Dimmable</span><span class="token operator">::</span><span class="token keyword">new</span><span class="token punctuation">)</span>
+                    <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 0-31</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>content<span class="token punctuation">.</span>isDefaultDisplay<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment">// Only default display can have cutout.</span>
+                <span class="token comment">// See LocalDisplayAdapter.LocalDisplayDevice#getDisplayDeviceInfoLocked.</span>
+                rootHierarchy<span class="token punctuation">.</span><span class="token function">addFeature</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Feature<span class="token punctuation">.</span>Builder</span><span class="token punctuation">(</span>wmService<span class="token punctuation">.</span>mPolicy<span class="token punctuation">,</span> <span class="token string">&quot;HideDisplayCutout&quot;</span><span class="token punctuation">,</span>
+                        <span class="token constant">FEATURE_HIDE_DISPLAY_CUTOUT</span><span class="token punctuation">)</span>
+                        <span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">//  0-36</span>
+                        <span class="token punctuation">.</span><span class="token function">except</span><span class="token punctuation">(</span><span class="token constant">TYPE_NAVIGATION_BAR</span><span class="token punctuation">,</span> <span class="token constant">TYPE_NAVIGATION_BAR_PANEL</span><span class="token punctuation">,</span> <span class="token constant">TYPE_STATUS_BAR</span><span class="token punctuation">,</span>
+                                <span class="token constant">TYPE_NOTIFICATION_SHADE</span><span class="token punctuation">)</span><span class="token comment">//  24 25  15  17</span>
+                        <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token comment">// 0-14   16  18-23 26-35</span>
+                        <span class="token punctuation">.</span><span class="token function">addFeature</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Feature<span class="token punctuation">.</span>Builder</span><span class="token punctuation">(</span>wmService<span class="token punctuation">.</span>mPolicy<span class="token punctuation">,</span> <span class="token string">&quot;OneHanded&quot;</span><span class="token punctuation">,</span>
+                                <span class="token constant">FEATURE_ONE_HANDED</span><span class="token punctuation">)</span>
+                                <span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                                <span class="token punctuation">.</span><span class="token function">except</span><span class="token punctuation">(</span><span class="token constant">TYPE_NAVIGATION_BAR</span><span class="token punctuation">,</span> <span class="token constant">TYPE_NAVIGATION_BAR_PANEL</span><span class="token punctuation">,</span>
+                                        <span class="token constant">TYPE_SECURE_SYSTEM_OVERLAY</span><span class="token punctuation">)</span><span class="token comment">//24  25  33</span>
+                                <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 0-23   26-32  34-35</span>
+            <span class="token punctuation">}</span>
+            rootHierarchy
+                    <span class="token punctuation">.</span><span class="token function">addFeature</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Feature<span class="token punctuation">.</span>Builder</span><span class="token punctuation">(</span>wmService<span class="token punctuation">.</span>mPolicy<span class="token punctuation">,</span> <span class="token string">&quot;FullscreenMagnification&quot;</span><span class="token punctuation">,</span>
+                            <span class="token constant">FEATURE_FULLSCREEN_MAGNIFICATION</span><span class="token punctuation">)</span>
+                            <span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 0-36</span>
+                            <span class="token punctuation">.</span><span class="token function">except</span><span class="token punctuation">(</span><span class="token constant">TYPE_ACCESSIBILITY_MAGNIFICATION_OVERLAY</span><span class="token punctuation">,</span> <span class="token constant">TYPE_INPUT_METHOD</span><span class="token punctuation">,</span>
+                                    <span class="token constant">TYPE_INPUT_METHOD_DIALOG</span><span class="token punctuation">,</span> <span class="token constant">TYPE_MAGNIFICATION_OVERLAY</span><span class="token punctuation">,</span>
+                                    <span class="token constant">TYPE_NAVIGATION_BAR</span><span class="token punctuation">,</span> <span class="token constant">TYPE_NAVIGATION_BAR_PANEL</span><span class="token punctuation">)</span><span class="token comment">// 32  13   14  28  24 25</span>
+                            <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token comment">// 0-12 15-23  26-27 29-31 33-35</span>
+                    <span class="token punctuation">.</span><span class="token function">addFeature</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Feature<span class="token punctuation">.</span>Builder</span><span class="token punctuation">(</span>wmService<span class="token punctuation">.</span>mPolicy<span class="token punctuation">,</span> <span class="token string">&quot;ImePlaceholder&quot;</span><span class="token punctuation">,</span>
+                            <span class="token constant">FEATURE_IME_PLACEHOLDER</span><span class="token punctuation">)</span>
+                            <span class="token punctuation">.</span><span class="token function">and</span><span class="token punctuation">(</span><span class="token constant">TYPE_INPUT_METHOD</span><span class="token punctuation">,</span> <span class="token constant">TYPE_INPUT_METHOD_DIALOG</span><span class="token punctuation">)</span><span class="token comment">// 13-14</span>
+                            <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 13-14</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre></div><h2 id="_3-2-feature总结"><a href="#_3-2-feature总结" class="header-anchor">#</a> 3.2 Feature总结</h2> <p><strong>WindowedMagnification</strong>：
+拥有特征的层级： 0-31
+特征描述： 支持窗口缩放的一块区域，一般是通过辅助服务进行缩小或放大</p> <p><strong>HideDisplayCutout</strong>：
+拥有特征的层级： 0-14   16  18-23 26-35
+特征描述：隐藏剪切区域，即在默认显示设备上隐藏不规则形状的屏幕区域，比如在代码中打开这个功能后，有这个功能的图层就不会延伸到刘海屏区域。</p> <p><strong>OneHanded</strong>：
+拥有特征的层级：0-23   26-32  34-35
+特征描述：表示支持单手操作的图层，这个功能在手机上还是挺常见的</p> <p><strong>FullscreenMagnification</strong>：
+拥有特征的层级：0-12 15-23  26-27 29-31 33-35
+特征描述：支持全屏幕缩放的图层，和上面的不同，这个是全屏缩放，前面那个可以局部</p> <p><strong>ImePlaceholder</strong>：
+拥有特征的层级： 13-14
+特征描述：输入法相关</p> <p>再放上之前画的层级树更加清晰了
+<img src="/biubiubiuBlog/assets/img/hierarchy-tree.e849f603.png" alt="层级结构树"></p> <h2 id="_3-3-构建层级树-displayareapolicybuilder-build"><a href="#_3-3-构建层级树-displayareapolicybuilder-build" class="header-anchor">#</a> 3.3 构建层级树 DisplayAreaPolicyBuilder::build</h2> <p>上面只是将 5 个 Feature 添加到了 rootHierarchy 的 mFeatures 这个集合中</p> <div class="language-java extra-class"><pre class="language-java"><code># <span class="token class-name">HierarchyBuilder</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">DisplayAreaPolicyBuilder<span class="token punctuation">.</span>Feature</span><span class="token punctuation">&gt;</span></span> mFeatures <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">HierarchyBuilder</span> <span class="token function">addFeature</span><span class="token punctuation">(</span><span class="token class-name">DisplayAreaPolicyBuilder<span class="token punctuation">.</span>Feature</span> feature<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            mFeatures<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>feature<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+</code></pre></div><p>DisplayAreaPolicyBuilder::setRootHierarchy 方法很简单，就是把添加了 ImeContainer 和5个 Feature 的 HierarchyBuilder 设置给 DisplayAreaPolicyBuilder</p> <div class="language-java extra-class"><pre class="language-java"><code># <span class="token class-name">DisplayAreaPolicyBuilder</span>
+    <span class="token class-name">DisplayAreaPolicyBuilder</span> <span class="token function">setRootHierarchy</span><span class="token punctuation">(</span><span class="token class-name">HierarchyBuilder</span> rootHierarchyBuilder<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        mRootHierarchyBuilder <span class="token operator">=</span> rootHierarchyBuilder<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre></div><p>然后开始执行 DisplayAreaPolicyBuilder::build</p> <div class="language-java extra-class"><pre class="language-java"><code># <span class="token class-name">DisplayAreaPolicyBuilder</span>
+
+    <span class="token annotation punctuation">@Nullable</span> <span class="token keyword">private</span> <span class="token class-name">HierarchyBuilder</span> mRootHierarchyBuilder<span class="token punctuation">;</span>
+
+    <span class="token comment">// 这个可以忽略，没有值</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">HierarchyBuilder</span><span class="token punctuation">&gt;</span></span> mDisplayAreaGroupHierarchyBuilders <span class="token operator">=</span>
+            <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token class-name">Result</span> <span class="token function">build</span><span class="token punctuation">(</span><span class="token class-name">WindowManagerService</span> wmService<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">//  对输入参数进行验证，确保它们是有效的</span>
+        <span class="token function">validate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// Attach DA group roots to screen hierarchy before adding windows to group hierarchies.</span>
+        <span class="token comment">// 重点：构建层级树</span>
+        mRootHierarchyBuilder<span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span>mDisplayAreaGroupHierarchyBuilders<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 因为mDisplayAreaGroupHierarchyBuilders没有值，后面的都可以忽略</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Result</span><span class="token punctuation">(</span>wmService<span class="token punctuation">,</span> mRootHierarchyBuilder<span class="token punctuation">.</span>mRoot<span class="token punctuation">,</span> displayAreaGroupRoots<span class="token punctuation">,</span>
+                mSelectRootForWindowFunc<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre></div><h1 id="_4-层级结构树构造"><a href="#_4-层级结构树构造" class="header-anchor">#</a> 4. 层级结构树构造</h1> <p>这个 mRootHierarchyBuilder 就是上一小节操作的 RootHierarchyBuilder ，然后执行其 build 方法，这个方法非常重要！！！</p> <p><img src="/biubiubiuBlog/assets/img/hierarchy-tree-structure.ded9f342.png" alt="层级树构造图"></p> <p>在构造层级树一共分为2步：</p> <ul><li><ol><li>构建PendingArea树</li></ol> <ul><li><ol><li>构建Feature相关</li></ol></li> <li><ol start="2"><li>构建Leaf相关</li></ol></li></ul></li> <li><ol start="2"><li>根据 PendingArea 树构建最终的 DisplayAreas 树，也就是层级树</li></ol></li></ul> <p>通过 2 个类的名字也能感觉到一些关系，毕竟叫 Pending 。既然要先构造 PendingPendingArea ，那肯定需要先看看 PendingArea 这个数据结构</p> <h2 id="_4-1-数据结构-pendingarea简介"><a href="#_4-1-数据结构-pendingarea简介" class="header-anchor">#</a> 4.1 数据结构 PendingArea简介</h2> <div class="language-java extra-class"><pre class="language-java"><code># <span class="token class-name">DisplayAreaPolicyBuilder<span class="token punctuation">.</span>PendingArea</span>
+
+    <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">PendingArea</span> <span class="token punctuation">{</span>
+        <span class="token keyword">final</span> <span class="token keyword">int</span> mMinLayer<span class="token punctuation">;</span> <span class="token comment">// 最小层级</span>
+        <span class="token keyword">final</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">PendingArea</span><span class="token punctuation">&gt;</span></span> mChildren <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 有Children说明也是一个容器</span>
+        <span class="token keyword">final</span> <span class="token class-name">Feature</span> mFeature<span class="token punctuation">;</span> <span class="token comment">//  当前支持的Feature</span>
+        <span class="token keyword">final</span> <span class="token class-name">PendingArea</span> mParent<span class="token punctuation">;</span> <span class="token comment">// 有父亲</span>
+        <span class="token keyword">int</span> mMaxLayer<span class="token punctuation">;</span> <span class="token comment">// 最大层级</span>
+        <span class="token comment">// 从这几个成员变量其实能感觉到和上一篇画的层级树的图有点那味了</span>
+        <span class="token annotation punctuation">@Nullable</span> <span class="token class-name">DisplayArea</span> mExisting<span class="token punctuation">;</span> <span class="token comment">// 当前存在的容器</span>
+        <span class="token keyword">boolean</span> mSkipTokens <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span> <span class="token comment">// 只有输入法和应用会为true</span>
+
+        <span class="token class-name">PendingArea</span><span class="token punctuation">(</span><span class="token class-name">Feature</span> feature<span class="token punctuation">,</span> <span class="token keyword">int</span> minLayer<span class="token punctuation">,</span> <span class="token class-name">PendingArea</span> parent<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            mMinLayer <span class="token operator">=</span> minLayer<span class="token punctuation">;</span>
+            mFeature <span class="token operator">=</span> feature<span class="token punctuation">;</span>
+            mParent <span class="token operator">=</span> parent<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token punctuation">}</span>
+</code></pre></div><p>PendingArea 后面还有一些方法，等后面会再次具体分析，当前只有 PendingArea 这个数据结构是什么样就好了。</p> <h2 id="_4-2-构建pendingarea树"><a href="#_4-2-构建pendingarea树" class="header-anchor">#</a> 4.2 构建PendingArea树</h2> <p>下面这段代码比较长我再代码里加了很多注释，其实这一块就是 java 的循环对数据结构的处理。就和刚学 java 的时候看 2 个 for 循环一样。
+这个方法其实是构建整个树的方法，先看一眼，后面会再具体分析。</p> <div class="language-java extra-class"><pre class="language-java"><code># <span class="token class-name">DisplayAreaPolicyBuilder<span class="token punctuation">.</span>HierarchyBuilder</span>
+
+        <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">RootDisplayArea</span> mRoot<span class="token punctuation">;</span>
+
+        <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">build</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Nullable</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">HierarchyBuilder</span><span class="token punctuation">&gt;</span></span> displayAreaGroupHierarchyBuilders<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">final</span> <span class="token class-name">WindowManagerPolicy</span> policy <span class="token operator">=</span> mRoot<span class="token punctuation">.</span>mWmService<span class="token punctuation">.</span>mPolicy<span class="token punctuation">;</span>
+            <span class="token comment">// 定义最大层级数  37 = 36+1 </span>
+            <span class="token keyword">final</span> <span class="token keyword">int</span> maxWindowLayerCount <span class="token operator">=</span> policy<span class="token punctuation">.</span><span class="token function">getMaxWindowLayer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+            <span class="token comment">// 存储每个窗口层级对应的 DisplayArea.Tokens,一共37个，后续窗口挂载也是在这个数据结构上找</span>
+            <span class="token comment">// 在方法底部执行instantiateChildren的时候调用</span>
+            <span class="token keyword">final</span> <span class="token class-name">DisplayArea<span class="token punctuation">.</span>Tokens</span><span class="token punctuation">[</span><span class="token punctuation">]</span> displayAreaForLayer <span class="token operator">=</span>
+                    <span class="token keyword">new</span> <span class="token class-name">DisplayArea<span class="token punctuation">.</span>Tokens</span><span class="token punctuation">[</span>maxWindowLayerCount<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+            <span class="token comment">// 存储每个特性对应的 DisplayArea 列表</span>
+            <span class="token comment">// mFeatures就是在configureTrustedHierarchyBuilder配置的Feature大小，很明显一共是5个</span>
+            <span class="token keyword">final</span> <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Feature</span><span class="token punctuation">,</span> <span class="token class-name">List</span><span class="token punctuation">&lt;</span><span class="token class-name">DisplayArea</span><span class="token punctuation">&lt;</span><span class="token class-name">WindowContainer</span><span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span></span> featureAreas <span class="token operator">=</span>
+                    <span class="token keyword">new</span> <span class="token class-name">ArrayMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span>mFeatures<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> mFeatures<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment">// 为每个feature，创建其对应的DisplayArea列表</span>
+                featureAreas<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>mFeatures<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token comment">// 到这里featureAreas里一共是5个值，key就是上节提到的5个Feature，value目前就是个空的List</span>
+
+            <span class="token comment">// -------构建PendingArea树----</span>
+            <span class="token comment">// *1 创建 PendingArea 数组，用于临时存储每个窗口层级对应的 PendingArea，也是37个</span>
+            <span class="token comment">// 后面需要关注这个areaForLayer成员的变化</span>
+            <span class="token class-name">PendingArea</span><span class="token punctuation">[</span><span class="token punctuation">]</span> areaForLayer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PendingArea</span><span class="token punctuation">[</span>maxWindowLayerCount<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token comment">// 先创建个PendingArea 再让areaForLayer的37个数据都默认为root的PendingArea</span>
+            <span class="token comment">// 注意第一个参数feature为null</span>
+            <span class="token keyword">final</span> <span class="token class-name">PendingArea</span> root <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PendingArea</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span>areaForLayer<span class="token punctuation">,</span> root<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment">// 2. 构建Features的树</span>
+            <span class="token comment">// mFeatures.size为5，所以有5个大循环</span>
+            <span class="token keyword">final</span> <span class="token keyword">int</span> size <span class="token operator">=</span> mFeatures<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> size<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment">// 拿到当前需要处理的Feature</span>
+                <span class="token keyword">final</span> <span class="token class-name">Feature</span> feature <span class="token operator">=</span> mFeatures<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token class-name">PendingArea</span> featureArea <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+                <span class="token comment">// 内部循环，37次</span>
+                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> layer <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> layer <span class="token operator">&lt;</span> maxWindowLayerCount<span class="token punctuation">;</span> layer<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token comment">// 如果这个层级，支持当前Feature</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>feature<span class="token punctuation">.</span>mWindowLayers<span class="token punctuation">[</span>layer<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        <span class="token comment">//判断是否复用 PendingArea （同一个feature才复用，否则创建新的）</span>
+                        <span class="token keyword">if</span> <span class="token punctuation">(</span>featureArea <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">||</span> featureArea<span class="token punctuation">.</span>mParent <span class="token operator">!=</span> areaForLayer<span class="token punctuation">[</span>layer<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                            <span class="token comment">// 创建新的 PendingArea，作为上一层级的子节点，用于当前层级，并且双向奔赴，设置为各自的孩子或者父亲</span>
+                            <span class="token comment">// 注意第一个参数feature</span>
+                            featureArea <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PendingArea</span><span class="token punctuation">(</span>feature<span class="token punctuation">,</span> layer<span class="token punctuation">,</span> areaForLayer<span class="token punctuation">[</span>layer<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                            areaForLayer<span class="token punctuation">[</span>layer<span class="token punctuation">]</span><span class="token punctuation">.</span>mChildren<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>featureArea<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        <span class="token punctuation">}</span>
+                        areaForLayer<span class="token punctuation">[</span>layer<span class="token punctuation">]</span> <span class="token operator">=</span> featureArea<span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                        <span class="token comment">// 如果该特性不应用于当前窗口层级，则featureArea置为空。用于上面if的判断</span>
+                        featureArea <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            <span class="token comment">// 到这里，areaForLayer这个37层就按照feature分类，有自己对应的PendingArea了。</span>
+
+
+            <span class="token comment">// 3. 构建叶子节点相关的PendingArea，注意还是操作areaForLayer数组，但是操作的是内部元素的mChildren的值</span>
+
+            <span class="token comment">// 定义一个叶子节点用的 PendingArea</span>
+            <span class="token class-name">PendingArea</span> leafArea <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> leafType <span class="token operator">=</span> <span class="token constant">LEAF_TYPE_TOKENS</span><span class="token punctuation">;</span><span class="token comment">// 定义leafType</span>
+           
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> layer <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> layer <span class="token operator">&lt;</span> maxWindowLayerCount<span class="token punctuation">;</span> layer<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment">//  获取每层的type，从这看type是和所在层级有关系的</span>
+                <span class="token keyword">int</span> type <span class="token operator">=</span> <span class="token function">typeOfLayer</span><span class="token punctuation">(</span>policy<span class="token punctuation">,</span> layer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment">// // 检查是否可以复用前一个层级的 Tokens，和前面的循环类似</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>leafArea <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">||</span> leafArea<span class="token punctuation">.</span>mParent <span class="token operator">!=</span> areaForLayer<span class="token punctuation">[</span>layer<span class="token punctuation">]</span>
+                        <span class="token operator">||</span> type <span class="token operator">!=</span> leafType<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token comment">// 创建PendingArea，注意参数,featur为null</span>
+                    leafArea <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PendingArea</span><span class="token punctuation">(</span><span class="token keyword">null</span> <span class="token comment">/* feature */</span><span class="token punctuation">,</span> layer<span class="token punctuation">,</span> areaForLayer<span class="token punctuation">[</span>layer<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token comment">// 注意是添加到孩子，而不是跟上一次循环直接修改areaForLayer</span>
+                    areaForLayer<span class="token punctuation">[</span>layer<span class="token punctuation">]</span><span class="token punctuation">.</span>mChildren<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>leafArea<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    leafType <span class="token operator">=</span> type<span class="token punctuation">;</span>
+                    <span class="token comment">// 应用类型处理</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>leafType <span class="token operator">==</span> <span class="token constant">LEAF_TYPE_TASK_CONTAINERS</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        <span class="token comment">// 添加 TaskDisplayArea 到应用程序层级</span>
+                        <span class="token function">addTaskDisplayAreasToApplicationLayer</span><span class="token punctuation">(</span>areaForLayer<span class="token punctuation">[</span>layer<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                         <span class="token comment">// 添加 DisplayAreaGroup 到应用程序层级</span>
+                        <span class="token function">addDisplayAreaGroupsToApplicationLayer</span><span class="token punctuation">(</span>areaForLayer<span class="token punctuation">[</span>layer<span class="token punctuation">]</span><span class="token punctuation">,</span>
+                                displayAreaGroupHierarchyBuilders<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        <span class="token comment">// 跳过创建 Tokens，即不创建 Tokens，即使没有 Task</span>
+                        leafArea<span class="token punctuation">.</span>mSkipTokens <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>leafType <span class="token operator">==</span> <span class="token constant">LEAF_TYPE_IME_CONTAINERS</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        <span class="token comment">// 输入法处理</span>
+                        leafArea<span class="token punctuation">.</span>mExisting <span class="token operator">=</span> mImeContainer<span class="token punctuation">;</span>
+                         <span class="token comment">// 跳过</span>
+                        leafArea<span class="token punctuation">.</span>mSkipTokens <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+                leafArea<span class="token punctuation">.</span>mMaxLayer <span class="token operator">=</span> layer<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token comment">// 计算根节点的最大层级</span>
+            root<span class="token punctuation">.</span><span class="token function">computeMaxLayer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">// -------构建DisplayAreas树----</span>
+            <span class="token comment">// 4. 根据之前定义的PendingArea生成最后的 DisplayAreas 树</span>
+            <span class="token comment">// 注意参数</span>
+            <span class="token comment">// We built a tree of PendingAreas above with all the necessary info to represent the</span>
+            <span class="token comment">// hierarchy, now create and attach real DisplayAreas to the root.</span>
+            root<span class="token punctuation">.</span><span class="token function">instantiateChildren</span><span class="token punctuation">(</span>mRoot<span class="token punctuation">,</span> displayAreaForLayer<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> featureAreas<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment">// 通知根节点已经完成了所有DisplayArea的添加 （将displayAreaForLayer保存在RootDisplayArea成员变量roomAreaForLayer中，供后面逻辑使用）</span>
+            mRoot<span class="token punctuation">.</span><span class="token function">onHierarchyBuilt</span><span class="token punctuation">(</span>mFeatures<span class="token punctuation">,</span> displayAreaForLayer<span class="token punctuation">,</span> featureAreas<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+</code></pre></div><h3 id="_4-2-1-构建feature相关"><a href="#_4-2-1-构建feature相关" class="header-anchor">#</a> 4.2.1 构建Feature相关</h3> <p>这边根据具体的执行画了几张图，先看上面 Features 的循环逻辑，在执行循环前数组 areaForLayer 和执行第一次大循环后集合如下
+第一个 Feature 是 WindowedMagnification 拥有特征的层级 0-31 ，也就是其 前面 32 个为 true 。
+<img src="/biubiubiuBlog/assets/img/first-loop-array.36f1a780.png" alt="第一次大循环结束数组">
+在层级树，如果某一块都是支持同一Feature的话，可以写成  “name 起始层：结束层 ”的形式，转换后如下
+转换成层级树的方式就是
+<img src="/biubiubiuBlog/assets/img/first-loop-array-convert.1bc8c904.png" alt="第一次大循环结束数组-转换">
+然后第二个大循环</p> <p>第二Feature是HideDisplayCutout拥有特征的层级 0-14   16  18-23 26-35
+<img src="/biubiubiuBlog/assets/img/second-loop-array.56e4817a.png" alt="第二次大循环结束数组">
+太长了所以第24开始换到了下一排， 规律就是结合上一次的循环，0-31以内，HideDisplayCutout的父亲都是上一次循环的WindowedMagnification，然后32之后的父亲就是默认的root了。
+再转成层级树的表示形式如下：
+<img src="/biubiubiuBlog/assets/img/second-loop-array-convert.b0af80de.png" alt="第二次大循环结束数组-转换">
+按照这个规则Feature 5次全执行完后，层级树的图就是下面这个，不过做了下顺序的调整，从小到达排序
+<img src="/biubiubiuBlog/assets/img/first-loop-end.dc2b509c.png" alt="第一次大循环结束"></p> <h3 id="_4-2-2-构建leaf相关"><a href="#_4-2-2-构建leaf相关" class="header-anchor">#</a> 4.2.2 构建Leaf相关</h3> <p>在构建叶子节点的时候，又有一个新的东西，leafType ，对应的就是叶子节点的类型,默认是 LEAF_TYPE_TOKENS ，一共也只定义了 3 个</p> <div class="language-java extra-class"><pre class="language-java"><code># <span class="token class-name">DisplayAreaPolicyBuilder<span class="token punctuation">.</span>HierarchyBuilder</span>
+        <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> <span class="token constant">LEAF_TYPE_TASK_CONTAINERS</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// APP</span>
+        <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> <span class="token constant">LEAF_TYPE_IME_CONTAINERS</span> <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">// 输入法</span>
+        <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> <span class="token constant">LEAF_TYPE_TOKENS</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// 默认</span>
+</code></pre></div><p>然后是通过 typeOfLayer 方法根据当前层级返回 type</p> <div class="language-java extra-class"><pre class="language-java"><code># <span class="token class-name">DisplayAreaPolicyBuilder<span class="token punctuation">.</span>HierarchyBuilder</span>
+
+        <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">typeOfLayer</span><span class="token punctuation">(</span><span class="token class-name">WindowManagerPolicy</span> policy<span class="token punctuation">,</span> <span class="token keyword">int</span> layer<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>layer <span class="token operator">==</span> <span class="token constant">APPLICATION_LAYER</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token constant">LEAF_TYPE_TASK_CONTAINERS</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>layer <span class="token operator">==</span> policy<span class="token punctuation">.</span><span class="token function">getWindowLayerFromTypeLw</span><span class="token punctuation">(</span><span class="token constant">TYPE_INPUT_METHOD</span><span class="token punctuation">)</span>
+                    <span class="token operator">||</span> layer <span class="token operator">==</span> policy<span class="token punctuation">.</span><span class="token function">getWindowLayerFromTypeLw</span><span class="token punctuation">(</span><span class="token constant">TYPE_INPUT_METHOD_DIALOG</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token constant">LEAF_TYPE_IME_CONTAINERS</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token constant">LEAF_TYPE_TOKENS</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+</code></pre></div><p>逻辑还是比较简单的除了输入法（13-14）和应用（2）所在的层级，均返回 LEAF_TYPE_TOKENS。
+经过第二个 for 循环后，相当于给每个 Feature 都加上了一个 Leaf ， 然后对输入法和应用图做了单独的处理。
+先看输入法的， 是把 mExisting 设置为了最开始从 DisplayConten 传进来的 mImeContainer，然后 mSkipTokens 设置为 false ，表示后续的操作可以跳过。
+然后看对应用图层的处理，除了也将 mSkipTokens 设置为 false 外还执行了 2 个方法其中第 2 个方法<strong>addDisplayAreaGroupsToApplicationLayer</strong>因为内部依赖 displayAreaGroupHierarchyBuilders ，而目前也没看到对这个对象操作的地方，所以长度为 0 ，可以忽略，所以只看<strong>addTaskDisplayAreasToApplicationLayer</strong>方法即可
+<strong>addTaskDisplayAreasToApplicationLayer</strong></p> <p>mTaskDisplayAreas 看到应该联想到前面创建的 name 为 “DefaultTaskDisplayArea” 的那一个 TaskDisplayArea ，事实上也就是在那创建的，这个是和应用最相关的图层，
+从代码上看也能证明：</p> <div class="language-java extra-class"><pre class="language-java"><code># <span class="token class-name">DisplayAreaPolicyBuilder<span class="token punctuation">.</span>HierarchyBuilder</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">TaskDisplayArea</span><span class="token punctuation">&gt;</span></span> mTaskDisplayAreas <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token class-name">HierarchyBuilder</span> <span class="token function">setTaskDisplayAreas</span><span class="token punctuation">(</span><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">TaskDisplayArea</span><span class="token punctuation">&gt;</span></span> taskDisplayAreas<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        mTaskDisplayAreas<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mTaskDisplayAreas<span class="token punctuation">.</span><span class="token function">addAll</span><span class="token punctuation">(</span>taskDisplayAreas<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">addTaskDisplayAreasToApplicationLayer</span><span class="token punctuation">(</span><span class="token class-name">PendingArea</span> parentPendingArea<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 已知长度为1，</span>
+        <span class="token keyword">final</span> <span class="token keyword">int</span> count <span class="token operator">=</span> mTaskDisplayAreas<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> count<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">PendingArea</span> leafArea <span class="token operator">=</span>
+                    <span class="token keyword">new</span> <span class="token class-name">PendingArea</span><span class="token punctuation">(</span><span class="token keyword">null</span> <span class="token comment">/* feature */</span><span class="token punctuation">,</span> <span class="token constant">APPLICATION_LAYER</span><span class="token punctuation">,</span> parentPendingArea<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">// 所以就是把“DefaultTaskDisplayArea”这个设置为mExisting</span>
+            leafArea<span class="token punctuation">.</span>mExisting <span class="token operator">=</span> mTaskDisplayAreas<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            leafArea<span class="token punctuation">.</span>mMaxLayer <span class="token operator">=</span> <span class="token constant">APPLICATION_LAYER</span><span class="token punctuation">;</span>
+            <span class="token comment">// parentPendingArea.mChildren本来为大家都一样的Leaf，又添加了一个DefaultTaskDisplayArea</span>
+            parentPendingArea<span class="token punctuation">.</span>mChildren<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>leafArea<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre></div><p>这段对应用图层的处理非常的重要了，特别最下面对 parentPendingArea.mChildren 再次添加 DefaultTaskDisplayArea 的操作</p> <p>经过这个循环的处理，每个 Feature 下面都有了对应的叶子节点，如图：
+<img src="/biubiubiuBlog/assets/img/add-leaf-node.16dd71ac.png" alt="添加叶子节点">
+第二层应用层目前是有2个孩子的，一个是 Lead ,另一个就是 DefaultTaskDisplayArea。
+到目前为止，层级树雏形是有了。但是比较还是一个 PendingArea 数组，另外 Leaf 0:1 这种目前在代码上也还没有得到体现。</p> <h2 id="_4-3-真正displayareas树-pendingarea-instantiatechildren"><a href="#_4-3-真正displayareas树-pendingarea-instantiatechildren" class="header-anchor">#</a> 4.3 真正DisplayAreas树 PendingArea::instantiateChildren</h2> <p>其实从 PendingArea::instantiateChildren 上面源码给的 2 个注释也知道，前面的 2 个循环，只是构建了一个 PendingAreas 树，接下来才是真正构建层级树（DisplayAreas）
+并把这个树添加到 root(DisplayContent)</p> <div class="language-java extra-class"><pre class="language-java"><code># <span class="token class-name">DisplayAreaPolicyBuilder<span class="token punctuation">.</span>PendingArea</span>
+
+        <span class="token keyword">void</span> <span class="token function">instantiateChildren</span><span class="token punctuation">(</span><span class="token class-name">DisplayArea</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">DisplayArea</span><span class="token punctuation">&gt;</span></span> parent<span class="token punctuation">,</span> <span class="token class-name">DisplayArea<span class="token punctuation">.</span>Tokens</span><span class="token punctuation">[</span><span class="token punctuation">]</span> areaForLayer<span class="token punctuation">,</span>
+                <span class="token keyword">int</span> level<span class="token punctuation">,</span> <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Feature</span><span class="token punctuation">,</span> <span class="token class-name">List</span><span class="token punctuation">&lt;</span><span class="token class-name">DisplayArea</span><span class="token punctuation">&lt;</span><span class="token class-name">WindowContainer</span><span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span></span> areas<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">// 1. 子区域按照它们的最小层级进行升序排列</span>
+            mChildren<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token class-name">Comparator</span><span class="token punctuation">.</span><span class="token function">comparingInt</span><span class="token punctuation">(</span>pendingArea <span class="token operator">-&gt;</span> pendingArea<span class="token punctuation">.</span>mMinLayer<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">// 2. 遍历孩子将PendingArea转换成DisplayArea</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> mChildren<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">final</span> <span class="token class-name">PendingArea</span> child <span class="token operator">=</span> mChildren<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">final</span> <span class="token class-name">DisplayArea</span> area <span class="token operator">=</span> child<span class="token punctuation">.</span><span class="token function">createArea</span><span class="token punctuation">(</span>parent<span class="token punctuation">,</span> areaForLayer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>area <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token comment">// TaskDisplayArea and ImeContainer can be set at different hierarchy, so it can</span>
+                    <span class="token comment">// be null.</span>
+                    <span class="token keyword">continue</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token comment">// 将返回的area设置为孩子,第一次执行的时候root就是DisplayContent</span>
+                parent<span class="token punctuation">.</span><span class="token function">addChild</span><span class="token punctuation">(</span>area<span class="token punctuation">,</span> <span class="token class-name">WindowContainer</span><span class="token punctuation">.</span><span class="token constant">POSITION_TOP</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>child<span class="token punctuation">.</span>mFeature <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token comment">// 让Feature对应的容器里添加创建的DisplayArea</span>
+                    areas<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>child<span class="token punctuation">.</span>mFeature<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>area<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token comment">// 开始迭代构建</span>
+                child<span class="token punctuation">.</span><span class="token function">instantiateChildren</span><span class="token punctuation">(</span>area<span class="token punctuation">,</span> areaForLayer<span class="token punctuation">,</span> level <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> areas<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+</code></pre></div><p>先解析一下3个参数
+parent：根据上面代码的代码逻辑，root 就是 DisplayContent
+areaForLayer： 这个是 build 方法开始创建的 displayAreaForLayer
+level：从哪级开始
+areas： 这个也是build方法创建的map集合，key 是 Feature</p> <ul><li><ol><li>上来就执行了个排序，这个 mChildren 是啥呢？咋一看好像一点印象都没有，但是根据这个方法调用处看，他是 root.instantiateChildren,
+而这个 root 是构建 PendingAreas 树时最开始创建的 root ，也就是我们上面图片 PendingAreas 树里的 root 0:0 。所以他的孩子就是2次循环处理后，父亲是他的 PendingArea ，也就是那些 feature 或者 leaf</li></ol></li> <li><ol start="2"><li>这一步就是将那些 PendingArea 的数据结构转换为 DisplayArea</li></ol></li></ul> <p>之前看过 PendingArea 的成员变量和构造方法，现在看看</p> <div class="language-java extra-class"><pre class="language-java"><code># <span class="token class-name">DisplayAreaPolicyBuilder<span class="token punctuation">.</span>PendingArea</span>
+        <span class="token annotation punctuation">@Nullable</span>
+        <span class="token keyword">private</span> <span class="token class-name">DisplayArea</span> <span class="token function">createArea</span><span class="token punctuation">(</span><span class="token class-name">DisplayArea</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">DisplayArea</span><span class="token punctuation">&gt;</span></span> parent<span class="token punctuation">,</span>
+                <span class="token class-name">DisplayArea<span class="token punctuation">.</span>Tokens</span><span class="token punctuation">[</span><span class="token punctuation">]</span> areaForLayer<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">// 只有输入法和应用层mExisting有值</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>mExisting <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>mExisting<span class="token punctuation">.</span><span class="token function">asTokens</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+                    <span class="token comment">// 只有输入法满足</span>
+                    <span class="token comment">// Store the WindowToken container for layers</span>
+                    <span class="token function">fillAreaForLayers</span><span class="token punctuation">(</span>mExisting<span class="token punctuation">.</span><span class="token function">asTokens</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> areaForLayer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token comment">// 然后将mExisting作为结果返回</span>
+                <span class="token keyword">return</span> mExisting<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token comment">// mSkipTokens为true则返回，应用和IME创建的PendingArea</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>mSkipTokens<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token comment">// 2. 定义DisplayArea的type</span>
+            <span class="token class-name">DisplayArea<span class="token punctuation">.</span>Type</span> type<span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>mMinLayer <span class="token operator">&gt;</span> <span class="token constant">APPLICATION_LAYER</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                type <span class="token operator">=</span> <span class="token class-name">DisplayArea<span class="token punctuation">.</span>Type</span><span class="token punctuation">.</span><span class="token constant">ABOVE_TASKS</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>mMaxLayer <span class="token operator">&lt;</span> <span class="token constant">APPLICATION_LAYER</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                type <span class="token operator">=</span> <span class="token class-name">DisplayArea<span class="token punctuation">.</span>Type</span><span class="token punctuation">.</span><span class="token constant">BELOW_TASKS</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                type <span class="token operator">=</span> <span class="token class-name">DisplayArea<span class="token punctuation">.</span>Type</span><span class="token punctuation">.</span><span class="token constant">ANY</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>mFeature <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment">// // 3. 构建返回的leaf    注意第三个参数格式</span>
+                <span class="token keyword">final</span> <span class="token class-name">DisplayArea<span class="token punctuation">.</span>Tokens</span> leaf <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DisplayArea<span class="token punctuation">.</span>Tokens</span><span class="token punctuation">(</span>parent<span class="token punctuation">.</span>mWmService<span class="token punctuation">,</span> type<span class="token punctuation">,</span>
+                        <span class="token string">&quot;Leaf:&quot;</span> <span class="token operator">+</span> mMinLayer <span class="token operator">+</span> <span class="token string">&quot;:&quot;</span> <span class="token operator">+</span> mMaxLayer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token function">fillAreaForLayers</span><span class="token punctuation">(</span>leaf<span class="token punctuation">,</span> areaForLayer<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 给对应覆盖的层级都需要赋值</span>
+                <span class="token keyword">return</span> leaf<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                <span class="token comment">// 对有Feature的PendingArea返回构建</span>
+                <span class="token keyword">return</span> mFeature<span class="token punctuation">.</span>mNewDisplayAreaSupplier<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>parent<span class="token punctuation">.</span>mWmService<span class="token punctuation">,</span> type<span class="token punctuation">,</span>
+                        mFeature<span class="token punctuation">.</span>mName <span class="token operator">+</span> <span class="token string">&quot;:&quot;</span> <span class="token operator">+</span> mMinLayer <span class="token operator">+</span> <span class="token string">&quot;:&quot;</span> <span class="token operator">+</span> mMaxLayer<span class="token punctuation">,</span> mFeature<span class="token punctuation">.</span>mId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+</code></pre></div><p>注意这里的参数 areaForLaye 这个是一个 build 方法创建的集合，也是最终层级树的体现。</p> <ol><li>方法前面 mExisting.asTokens ， 这个 asTokens ，方法定义在 DisplayArea 中默认返回 null ，只有 DisplayArea.Tokens 返回本身。 而 ImeContainer 是继承 DisplayArea.Tokens 的，所以有返回值。
+而对于应用层 mExisting 是 TaskDisplayArea ，不是 DisplayArea.Tokens 的子类，所以这个不满足，也就是说只有 IME 的 PendingArea 才会执行下面 fillAreaForLayers 的逻辑</li></ol> <div class="language-java extra-class"><pre class="language-java"><code># <span class="token class-name">DisplayAreaPolicyBuilder<span class="token punctuation">.</span>PendingArea</span>
+        <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">fillAreaForLayers</span><span class="token punctuation">(</span><span class="token class-name">DisplayArea<span class="token punctuation">.</span>Tokens</span> leaf<span class="token punctuation">,</span> <span class="token class-name">DisplayArea<span class="token punctuation">.</span>Tokens</span><span class="token punctuation">[</span><span class="token punctuation">]</span> areaForLayer<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> mMinLayer<span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> mMaxLayer<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                areaForLayer<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> leaf<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+</code></pre></div><p>fillAreaForLayers 方法也比较简单，就是将这个 PendingArea 的所有图层都设置传进来的 leaf 。那当前逻辑只处理 IME 的话，就是把 13，14 层都设置这个 mExisting.
+另外应用层不执行到 fillAreaForLayers ，执行后面的 return mExisting ， 这里也有个很重要的点，因为前面知道应用层的 Feature 有 2 个孩子，但是 mExisting 却是为 DefaultTaskDisplayArea，
+<strong>这也就是为什么最终层级树的第二层只有DefaultTaskDisplayArea的原因</strong></p> <ol><li><p>定义了个 DisplayArea 的 type ， 也不复杂， 如果当前区域最小的图层都大于应用图层（2），那t ype 就是 ABOVE_TASKS ，如果最大图层还小于应用图层（2）就是 BELOW_TASKS（这个只有壁纸了），
+其他的就是 ANY 。目前还不知道具体用处，我认为了解即可</p></li> <li><p>mFeature == null 的条件，在上面 build 方法里有 2 个 for 循环都创建了 PendingArea 对象，第 2 个创建叶子节点的时候是没有传递 mFeature 的。
+直接创建 DisplayArea.Tokens ，最重要的是第三个参数，是一个字符串，就是构建这个对象的 name ，看格式也是非常的清楚。其实就是层级树的 Leaf 节点，比如“Leaf:0:1 ”。（舒服了）</p></li> <li><p>这里处理的是第一次循环对 Feature 构建出来的 PendingArea ，
+这里比较好奇的是这个 mNewDisplayAreaSupplier 是什么，那么就需要看 Feature 的定义了</p></li></ol> <div class="language-java extra-class"><pre class="language-java"><code># <span class="token class-name">DisplayAreaPolicyBuilder</span>
+    <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">Feature</span> <span class="token punctuation">{</span>
+        <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">String</span> mName<span class="token punctuation">;</span>
+        <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token keyword">int</span> mId<span class="token punctuation">;</span>
+        <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token keyword">boolean</span><span class="token punctuation">[</span><span class="token punctuation">]</span> mWindowLayers<span class="token punctuation">;</span>
+        <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">NewDisplayAreaSupplier</span> mNewDisplayAreaSupplier<span class="token punctuation">;</span>
+        <span class="token comment">// 构造函数</span>
+        <span class="token keyword">private</span> <span class="token class-name">Feature</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">,</span> <span class="token keyword">int</span> id<span class="token punctuation">,</span> <span class="token keyword">boolean</span><span class="token punctuation">[</span><span class="token punctuation">]</span> windowLayers<span class="token punctuation">,</span>
+            <span class="token class-name">NewDisplayAreaSupplier</span> newDisplayAreaSupplier<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            mName <span class="token operator">=</span> name<span class="token punctuation">;</span>
+            mId <span class="token operator">=</span> id<span class="token punctuation">;</span>
+            mWindowLayers <span class="token operator">=</span> windowLayers<span class="token punctuation">;</span>
+            mNewDisplayAreaSupplier <span class="token operator">=</span> newDisplayAreaSupplier<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+            <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">Builder</span> <span class="token punctuation">{</span>
+            <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+            <span class="token comment">// 默认为DisplayArea对象</span>
+            <span class="token keyword">private</span> <span class="token class-name">NewDisplayAreaSupplier</span> mNewDisplayAreaSupplier <span class="token operator">=</span> <span class="token class-name">DisplayArea</span><span class="token operator">::</span><span class="token keyword">new</span><span class="token punctuation">;</span>
+            <span class="token keyword">private</span> <span class="token keyword">boolean</span> mExcludeRoundedCorner <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+                <span class="token class-name">Feature</span> <span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+                <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Feature</span><span class="token punctuation">(</span>mName<span class="token punctuation">,</span> mId<span class="token punctuation">,</span> mLayers<span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> mNewDisplayAreaSupplier<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+     <span class="token comment">/** Supplier interface to provide a new created {@link DisplayArea}. */</span>
+    <span class="token keyword">interface</span> <span class="token class-name">NewDisplayAreaSupplier</span> <span class="token punctuation">{</span>
+        <span class="token class-name">DisplayArea</span> <span class="token function">create</span><span class="token punctuation">(</span><span class="token class-name">WindowManagerService</span> wms<span class="token punctuation">,</span> <span class="token class-name">DisplayArea<span class="token punctuation">.</span>Type</span> type<span class="token punctuation">,</span> <span class="token class-name">String</span> name<span class="token punctuation">,</span>
+                <span class="token keyword">int</span> featureId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre></div><p>mNewDisplayAreaSupplier这个对象的赋值是在Feature的构造方法，而根据代码分析，添加的5个Feature是通过Builder的方式，所以我们现在分析的
+mNewDisplayAreaSupplier的值，就是定义在Feature.Builder下的默认值<strong>也就是DisplayArea对象</strong>
+所以这一步就是返回了一个DisplayArea对象，然后name就是 “mFeature.mName + &quot;:&quot; + mMinLayer + &quot;:&quot; + mMaxLayer” 比如 “HideDisplayCutout:32:35”</p> <p>到现在为止，层级树每个成员是如何构建，以及里面的字符串名字是怎么来的，就全都清楚了。
+后面迭代也只是方法的递归而已，经过一层一层的迭代后，整个层级结构树就构建好了。
+现在的层级树如下：
+<img src="/biubiubiuBlog/assets/img/hierarchy-after-boot.5c3e1863.png" alt="开机后的层级树">
+这个层级树和上一篇看 不太一样那是因为 Leaf 下没有内容了，应用层 “DefaultTaskDisplayArea” 和壁纸层也没有内容，那是因为 Leaf 后面的内容都是具体业务添加上去的。
+所以其实对应 Window 的 add 流程，其实也就是真没添加到这个层级树的流程。后面具体分析业务的时候肯定是会有具体案例的。</p> <h1 id="_5-小结"><a href="#_5-小结" class="header-anchor">#</a> 5. 小结</h1> <p>窗口层级树这一块的代码有点抽象，代码虽然不多但是也挺绕。我写的也水平有限，学习这块最好是自己也能跟着画出一个层级树的图来。当然就算画不了，也问题不大，再怎么不济现在对层级树的概念肯定也是有所了解的，也知道怎么用命令行查看，以后实际业务经常会需要比对层级树的变化，看多了，自然也就清楚了。虽然层级树打印的内容比较多，但是只要关注**#1DefaultTaskDisplayArea**下的内容，这一块的内容也就那么点。</p></div></section> <footer class="page-edit"><!----> <!----></footer> <!----> <div class="comments-wrapper"><!----></div></main></div> <!----></div> <ul class="sub-sidebar sub-sidebar-wrapper" style="width:12rem;" data-v-b57cc07c data-v-7dd95ae2><li class="level-2" data-v-b57cc07c><a href="/biubiubiuBlog/blog/wms/WindowContainer%E7%AA%97%E5%8F%A3%E5%B1%82%E7%BA%A7-2-%E6%9E%84%E5%BB%BA%E6%B5%81%E7%A8%8B.html#_2-1-调用链" class="sidebar-link reco-side-_2-1-调用链" data-v-b57cc07c>2.1 调用链</a></li><li class="level-2" data-v-b57cc07c><a href="/biubiubiuBlog/blog/wms/WindowContainer%E7%AA%97%E5%8F%A3%E5%B1%82%E7%BA%A7-2-%E6%9E%84%E5%BB%BA%E6%B5%81%E7%A8%8B.html#_2-2-前期的一些调用链" class="sidebar-link reco-side-_2-2-前期的一些调用链" data-v-b57cc07c>2.2 前期的一些调用链</a></li><li class="level-2" data-v-b57cc07c><a href="/biubiubiuBlog/blog/wms/WindowContainer%E7%AA%97%E5%8F%A3%E5%B1%82%E7%BA%A7-2-%E6%9E%84%E5%BB%BA%E6%B5%81%E7%A8%8B.html#_3-1-配置-feature" class="sidebar-link reco-side-_3-1-配置-feature" data-v-b57cc07c>3.1 配置 Feature</a></li><li class="level-3" data-v-b57cc07c><a href="/biubiubiuBlog/blog/wms/WindowContainer%E7%AA%97%E5%8F%A3%E5%B1%82%E7%BA%A7-2-%E6%9E%84%E5%BB%BA%E6%B5%81%E7%A8%8B.html#_3-1-1-all-and-except方法" class="sidebar-link reco-side-_3-1-1-all-and-except方法" data-v-b57cc07c>3.1.1 all，and，except方法</a></li><li class="level-3" data-v-b57cc07c><a href="/biubiubiuBlog/blog/wms/WindowContainer%E7%AA%97%E5%8F%A3%E5%B1%82%E7%BA%A7-2-%E6%9E%84%E5%BB%BA%E6%B5%81%E7%A8%8B.html#_3-1-2-重点-getwindowlayerfromtypelw-方法-决定窗口挂载在那一层" class="sidebar-link reco-side-_3-1-2-重点-getwindowlayerfromtypelw-方法-决定窗口挂载在那一层" data-v-b57cc07c>3.1.2 重点：getWindowLayerFromTypeLw 方法 （决定窗口挂载在那一层）</a></li><li class="level-2" data-v-b57cc07c><a href="/biubiubiuBlog/blog/wms/WindowContainer%E7%AA%97%E5%8F%A3%E5%B1%82%E7%BA%A7-2-%E6%9E%84%E5%BB%BA%E6%B5%81%E7%A8%8B.html#_3-2-feature总结" class="sidebar-link reco-side-_3-2-feature总结" data-v-b57cc07c>3.2 Feature总结</a></li><li class="level-2" data-v-b57cc07c><a href="/biubiubiuBlog/blog/wms/WindowContainer%E7%AA%97%E5%8F%A3%E5%B1%82%E7%BA%A7-2-%E6%9E%84%E5%BB%BA%E6%B5%81%E7%A8%8B.html#_3-3-构建层级树-displayareapolicybuilder-build" class="sidebar-link reco-side-_3-3-构建层级树-displayareapolicybuilder-build" data-v-b57cc07c>3.3 构建层级树 DisplayAreaPolicyBuilder::build</a></li><li class="level-2" data-v-b57cc07c><a href="/biubiubiuBlog/blog/wms/WindowContainer%E7%AA%97%E5%8F%A3%E5%B1%82%E7%BA%A7-2-%E6%9E%84%E5%BB%BA%E6%B5%81%E7%A8%8B.html#_4-1-数据结构-pendingarea简介" class="sidebar-link reco-side-_4-1-数据结构-pendingarea简介" data-v-b57cc07c>4.1 数据结构 PendingArea简介</a></li><li class="level-2" data-v-b57cc07c><a href="/biubiubiuBlog/blog/wms/WindowContainer%E7%AA%97%E5%8F%A3%E5%B1%82%E7%BA%A7-2-%E6%9E%84%E5%BB%BA%E6%B5%81%E7%A8%8B.html#_4-2-构建pendingarea树" class="sidebar-link reco-side-_4-2-构建pendingarea树" data-v-b57cc07c>4.2 构建PendingArea树</a></li><li class="level-3" data-v-b57cc07c><a href="/biubiubiuBlog/blog/wms/WindowContainer%E7%AA%97%E5%8F%A3%E5%B1%82%E7%BA%A7-2-%E6%9E%84%E5%BB%BA%E6%B5%81%E7%A8%8B.html#_4-2-1-构建feature相关" class="sidebar-link reco-side-_4-2-1-构建feature相关" data-v-b57cc07c>4.2.1 构建Feature相关</a></li><li class="level-3" data-v-b57cc07c><a href="/biubiubiuBlog/blog/wms/WindowContainer%E7%AA%97%E5%8F%A3%E5%B1%82%E7%BA%A7-2-%E6%9E%84%E5%BB%BA%E6%B5%81%E7%A8%8B.html#_4-2-2-构建leaf相关" class="sidebar-link reco-side-_4-2-2-构建leaf相关" data-v-b57cc07c>4.2.2 构建Leaf相关</a></li><li class="level-2" data-v-b57cc07c><a href="/biubiubiuBlog/blog/wms/WindowContainer%E7%AA%97%E5%8F%A3%E5%B1%82%E7%BA%A7-2-%E6%9E%84%E5%BB%BA%E6%B5%81%E7%A8%8B.html#_4-3-真正displayareas树-pendingarea-instantiatechildren" class="sidebar-link reco-side-_4-3-真正displayareas树-pendingarea-instantiatechildren" data-v-b57cc07c>4.3 真正DisplayAreas树 PendingArea::instantiateChildren</a></li></ul></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div><div class="click-effects-wrap" data-v-a3fc49fc></div><div class="kanbanniang" data-v-5775ee02><div class="banniang-container" style="display:;" data-v-5775ee02><div class="messageBox" style="right:68px;bottom:190px;display:none;" data-v-5775ee02>
+      欢迎来到 我的博客
+    </div> <div class="operation" style="right:90px;bottom:40px;display:none;" data-v-5775ee02><i class="kbnfont kbn-ban-home ban-home" data-v-5775ee02></i> <i class="kbnfont kbn-ban-message message" data-v-5775ee02></i> <i class="kbnfont kbn-ban-close close" data-v-5775ee02></i> <a target="_blank" href="https://vuepress-theme-reco.recoluan.com/views/plugins/kanbanniang.html" data-v-5775ee02><i class="kbnfont kbn-ban-info info" data-v-5775ee02></i></a> <i class="kbnfont kbn-ban-theme skin" style="display:none;" data-v-5775ee02></i></div> <canvas id="banniang" width="135" height="300" class="live2d" style="position:fixed;right:65px;bottom:0px;opacity:0.8;z-index:99999;" data-v-5775ee02></canvas></div> <div class="showBanNiang" style="display:none;" data-v-5775ee02>
+    看板娘
+  </div></div></div></div>
+    <script src="/biubiubiuBlog/assets/js/app.20a7e9f3.js" defer></script><script src="/biubiubiuBlog/assets/js/7.e43da086.js" defer></script><script src="/biubiubiuBlog/assets/js/2.dabce1ab.js" defer></script><script src="/biubiubiuBlog/assets/js/1.219a1c74.js" defer></script><script src="/biubiubiuBlog/assets/js/31.0351593a.js" defer></script>
+  </body>
+</html>

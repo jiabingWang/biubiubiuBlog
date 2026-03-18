@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>窗口的移除-removeWindow | 我的博客</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    
+    <meta name="description" content="XXX">
+    
+    <link rel="preload" href="/biubiubiuBlog/assets/css/0.styles.74b8b9fa.css" as="style"><link rel="preload" href="/biubiubiuBlog/assets/js/app.20a7e9f3.js" as="script"><link rel="preload" href="/biubiubiuBlog/assets/js/7.e43da086.js" as="script"><link rel="preload" href="/biubiubiuBlog/assets/js/2.dabce1ab.js" as="script"><link rel="preload" href="/biubiubiuBlog/assets/js/1.219a1c74.js" as="script"><link rel="preload" href="/biubiubiuBlog/assets/js/89.a733d5ac.js" as="script"><link rel="prefetch" href="/biubiubiuBlog/assets/js/10.a2c8c2ad.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/11.b317b399.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/14.a8685819.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/15.34995a27.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/16.657e3a6c.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/17.7e908d25.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/18.30d05276.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/19.c402f836.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/20.b205bf55.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/21.7d8428b9.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/22.3edf63ed.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/23.19c52a59.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/24.efab5784.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/25.45d9d57a.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/26.e26385d4.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/27.bbf396de.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/28.f0265402.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/29.9cb2e969.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/3.93987c94.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/30.a3f75ffd.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/31.0351593a.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/32.ac4f24d6.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/33.20f6c60e.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/34.ffbed1f8.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/35.e04be348.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/36.11343c2a.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/37.d33d264a.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/38.28f224a6.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/39.9bcc7b8a.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/4.134a9152.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/40.0b44b1a3.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/41.66fb2e32.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/42.a117af30.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/43.137bde8b.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/44.2ae3bd40.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/45.23c5826c.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/46.4a10441e.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/47.ada825f7.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/48.ab5a67ef.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/49.76f3b9bb.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/5.112a4397.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/50.0dc34eb1.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/51.61a86ddf.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/52.156c7f72.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/53.9e20d1af.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/54.04b2a81f.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/55.09a2b985.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/56.568cf4bf.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/57.b386ec7e.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/58.4f68e64b.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/59.9dd52e9f.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/6.19bc117c.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/60.51007a41.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/61.648828dc.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/62.0f298cec.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/63.cb6a2f42.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/64.2b875f4f.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/65.53607183.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/66.b2bc5f84.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/67.b8a149e4.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/68.63e2b145.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/69.e34896f0.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/70.dea15f2f.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/71.c0d20e7e.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/72.173c8996.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/73.91ada282.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/74.264c6bb4.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/75.259de44d.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/76.4706f61a.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/77.6ea598ad.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/78.ff6d9b67.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/79.5eae00f8.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/8.f2b8f4f5.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/80.1cf63ee5.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/81.8c89ba44.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/82.9a597eec.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/83.feb964eb.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/84.50439d79.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/85.e6b8eb6f.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/86.8025dcd2.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/87.92e54992.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/88.9f0855f2.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/9.82d58b74.js"><link rel="prefetch" href="/biubiubiuBlog/assets/js/vendors~docsearch.8d482cdd.js">
+    <link rel="stylesheet" href="/biubiubiuBlog/assets/css/0.styles.74b8b9fa.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-7dd95ae2><div data-v-7dd95ae2><div class="password-shadow password-wrapper-out" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>我的博客</h3> <p class="description" data-v-59e6cb88>XXX</p> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><!---->
+          
+        <!---->
+        2026
+      </a></span></div></div> <div class="hide" data-v-7dd95ae2><header class="navbar" data-v-7dd95ae2><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/biubiubiuBlog/" class="home-link router-link-active"><!----> <span class="site-name">我的博客</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/biubiubiuBlog/" class="nav-link"><i class="iconfont reco-home"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/AMS/" class="nav-link"><i class="undefined"></i>
+  AMS
+</a></li><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/Activity生命周期/" class="nav-link"><i class="undefined"></i>
+  Activity生命周期
+</a></li><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/Activity启动流程/" class="nav-link"><i class="undefined"></i>
+  Activity启动流程
+</a></li><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/动画/" class="nav-link"><i class="undefined"></i>
+  动画
+</a></li><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/AppTransition/" class="nav-link"><i class="undefined"></i>
+  AppTransition
+</a></li><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/ShellTransitions/" class="nav-link"><i class="undefined"></i>
+  ShellTransitions
+</a></li><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/SurfaceFlinger/" class="nav-link"><i class="undefined"></i>
+  SurfaceFlinger
+</a></li><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/Surface/" class="nav-link"><i class="undefined"></i>
+  Surface
+</a></li><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/VSync/" class="nav-link"><i class="undefined"></i>
+  VSync
+</a></li><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/WMS/" class="nav-link"><i class="undefined"></i>
+  WMS
+</a></li><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/窗口显示/" class="nav-link"><i class="undefined"></i>
+  窗口显示
+</a></li></ul></div></div><div class="nav-item"><a href="/biubiubiuBlog/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/biubiubiuBlog/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间轴
+</a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-7dd95ae2></div> <aside class="sidebar" data-v-7dd95ae2><div class="personal-info-wrapper" data-v-1fad0c41 data-v-7dd95ae2><!----> <!----> <div class="num" data-v-1fad0c41><div data-v-1fad0c41><h3 data-v-1fad0c41>51</h3> <h6 data-v-1fad0c41>文章</h6></div> <div data-v-1fad0c41><h3 data-v-1fad0c41>11</h3> <h6 data-v-1fad0c41>标签</h6></div></div> <ul class="social-links" data-v-1fad0c41></ul> <hr data-v-1fad0c41></div> <nav class="nav-links"><div class="nav-item"><a href="/biubiubiuBlog/" class="nav-link"><i class="iconfont reco-home"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/AMS/" class="nav-link"><i class="undefined"></i>
+  AMS
+</a></li><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/Activity生命周期/" class="nav-link"><i class="undefined"></i>
+  Activity生命周期
+</a></li><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/Activity启动流程/" class="nav-link"><i class="undefined"></i>
+  Activity启动流程
+</a></li><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/动画/" class="nav-link"><i class="undefined"></i>
+  动画
+</a></li><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/AppTransition/" class="nav-link"><i class="undefined"></i>
+  AppTransition
+</a></li><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/ShellTransitions/" class="nav-link"><i class="undefined"></i>
+  ShellTransitions
+</a></li><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/SurfaceFlinger/" class="nav-link"><i class="undefined"></i>
+  SurfaceFlinger
+</a></li><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/Surface/" class="nav-link"><i class="undefined"></i>
+  Surface
+</a></li><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/VSync/" class="nav-link"><i class="undefined"></i>
+  VSync
+</a></li><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/WMS/" class="nav-link"><i class="undefined"></i>
+  WMS
+</a></li><li class="dropdown-item"><!----> <a href="/biubiubiuBlog/categories/窗口显示/" class="nav-link"><i class="undefined"></i>
+  窗口显示
+</a></li></ul></div></div><div class="nav-item"><a href="/biubiubiuBlog/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/biubiubiuBlog/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间轴
+</a></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>窗口的移除-removeWindow</h3> <!----> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><!---->
+          
+        <!---->
+        2026
+      </a></span></div></div> <div data-v-7dd95ae2><div data-v-7dd95ae2><main class="page"><section style="display:;"><div class="page-title"><h1 class="title">窗口的移除-removeWindow</h1> <div data-v-8a445198><i class="iconfont reco-account" data-v-8a445198><span data-v-8a445198>biubiubiu</span></i> <i class="iconfont reco-date" data-v-8a445198><span data-v-8a445198>2026/1/22</span></i> <!----> <i class="tags iconfont reco-tag" data-v-8a445198><span class="tag-item" data-v-8a445198>WMS</span><span class="tag-item" data-v-8a445198>窗口显示</span></i></div></div> <div class="theme-reco-content content__default"><h1 id="_1-应用端处理"><a href="#_1-应用端处理" class="header-anchor">#</a> 1. 应用端处理</h1> <p>一般销毁窗口的场景就2种：</p> <ul><li><ol><li>销毁Activity</li></ol></li> <li><ol start="2"><li>重启Activity</li></ol></li></ul> <p>应用端的处理都是在 ActivityThread 触发这些事件处理的，不管是销毁还是重启，触发 Window 移除都要执行到 ActivityThread::performDestroyActivity 方法， 从这个方法开发分析
+应用端的调用链如下：</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token class-name">ActivityThread</span><span class="token operator">::</span><span class="token function">handleDestroyActivity</span>
+    <span class="token class-name">ActivityThread</span><span class="token operator">::</span><span class="token function">performDestroyActivity</span>       <span class="token operator">--</span> onDestroy流程
+        <span class="token class-name">Instrumentation</span><span class="token operator">::</span><span class="token function">callActivityOnDestroy</span>
+            <span class="token class-name">Activity</span><span class="token operator">::</span><span class="token function">performDestroy</span>
+                <span class="token class-name">Activity</span><span class="token operator">::</span><span class="token function">onDestroy</span>
+    <span class="token class-name">WindowManagerImpl</span><span class="token operator">::</span><span class="token function">removeViewImmediate</span>        <span class="token operator">--</span> <span class="token constant">UI</span>处理
+        <span class="token class-name">WindowManagerGlobal</span><span class="token operator">::</span><span class="token function">removeView</span>
+            <span class="token class-name">WindowManagerGlobal</span><span class="token operator">::</span><span class="token function">removeViewLocked</span>
+                <span class="token class-name">ViewRootImpl</span><span class="token operator">::</span><span class="token function">die</span>
+                    <span class="token class-name">ViewRootImpl</span><span class="token operator">::</span><span class="token function">doDie</span>
+                        <span class="token class-name">ViewRootImpl</span><span class="token operator">::</span><span class="token function">dispatchDetachedFromWindow</span>
+                            <span class="token class-name">IWindowSession</span><span class="token operator">::</span><span class="token function">remove</span>     <span class="token operator">--</span> 跨进程到 system_server 进程处理
+                        <span class="token class-name">ViewRootImpl</span><span class="token operator">::</span><span class="token function">destroyHardwareRenderer</span>
+                        <span class="token class-name">ViewRootImpl</span><span class="token operator">::</span><span class="token function">destroySurface</span>
+                mDyingViews<span class="token operator">::</span><span class="token function">add</span>
+            
+    <span class="token class-name">ActivityClient</span><span class="token operator">::</span><span class="token function">activityDestroyed</span>            <span class="token operator">--</span> system_server 进程处理
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code># <span class="token class-name">ActivityThread</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">handleDestroyActivity</span><span class="token punctuation">(</span><span class="token class-name">ActivityClientRecord</span> r<span class="token punctuation">,</span> <span class="token keyword">boolean</span> finishing<span class="token punctuation">,</span> <span class="token keyword">int</span> configChanges<span class="token punctuation">,</span>
+            <span class="token keyword">boolean</span> getNonConfigInstance<span class="token punctuation">,</span> <span class="token class-name">String</span> reason<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 1. 主流程 onDestroy</span>
+        <span class="token function">performDestroyActivity</span><span class="token punctuation">(</span>r<span class="token punctuation">,</span> finishing<span class="token punctuation">,</span> configChanges<span class="token punctuation">,</span> getNonConfigInstance<span class="token punctuation">,</span> reason<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 视图相关处理</span>
+        <span class="token function">cleanUpPendingRemoveWindows</span><span class="token punctuation">(</span>r<span class="token punctuation">,</span> finishing<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">WindowManager</span> wm <span class="token operator">=</span> r<span class="token punctuation">.</span>activity<span class="token punctuation">.</span><span class="token function">getWindowManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">View</span> v <span class="token operator">=</span> r<span class="token punctuation">.</span>activity<span class="token punctuation">.</span>mDecor<span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>v <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>r<span class="token punctuation">.</span>activity<span class="token punctuation">.</span>mVisibleFromServer<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                mNumVisibleActivities<span class="token operator">--</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token class-name">IBinder</span> wtoken <span class="token operator">=</span> v<span class="token punctuation">.</span><span class="token function">getWindowToken</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>r<span class="token punctuation">.</span>activity<span class="token punctuation">.</span>mWindowAdded<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>r<span class="token punctuation">.</span>mPreserveWindow<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token comment">// ......需要保留Window</span>
+                <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+                     <span class="token comment">// 2. 移除当前视图 （触发WindowManagerGlobal移除）</span>
+                    wm<span class="token punctuation">.</span><span class="token function">removeViewImmediate</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            
+            r<span class="token punctuation">.</span>activity<span class="token punctuation">.</span>mDecor <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>finishing<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">// 3. 通知 SystemService 端</span>
+            <span class="token class-name">ActivityClient</span><span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">activityDestroyed</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span>token<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        mSomeActivitiesChanged <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre></div><p>做了三件事：</p> <ul><li><ol><li>执行到 Activity 的 onDestroy</li></ol></li> <li><ol start="2"><li>处理UI相关的移除</li></ol></li> <li><ol start="3"><li>通知 SystemService 端这个 Activity 已经 Destroy 了，后续该干啥干啥</li></ol></li></ul> <p>这一部分的代码也在 【Activity生命周期之onDestroy】讲过，重复的地方不在解释，本篇关注第二点：UI的移除</p> <div class="language-java extra-class"><pre class="language-java"><code># <span class="token class-name">WindowManagerImpl</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">WindowManagerGlobal</span> mGlobal <span class="token operator">=</span> <span class="token class-name">WindowManagerGlobal</span><span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">removeViewImmediate</span><span class="token punctuation">(</span><span class="token class-name">View</span> view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        mGlobal<span class="token punctuation">.</span><span class="token function">removeView</span><span class="token punctuation">(</span>view<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+# <span class="token class-name">WindowManagerGlobal</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">removeView</span><span class="token punctuation">(</span><span class="token class-name">View</span> view<span class="token punctuation">,</span> <span class="token keyword">boolean</span> immediate<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>view <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalArgumentException</span><span class="token punctuation">(</span><span class="token string">&quot;view must not be null&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">synchronized</span> <span class="token punctuation">(</span>mLock<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">// 从mViews获取到当前View对应的下标</span>
+            <span class="token keyword">int</span> index <span class="token operator">=</span> <span class="token function">findViewLocked</span><span class="token punctuation">(</span>view<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">// 去出相同下标的ViewRootImpl，再获取ViewRootImpl下的View</span>
+            <span class="token class-name">View</span> curView <span class="token operator">=</span> mRoots<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getView</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">// 主流程</span>
+            <span class="token function">removeViewLocked</span><span class="token punctuation">(</span>index<span class="token punctuation">,</span> immediate<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>curView <span class="token operator">==</span> view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token comment">// 如果2个View不相等，说明代码逻辑出现异常</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalStateException</span><span class="token punctuation">(</span><span class="token string">&quot;Calling with view &quot;</span> <span class="token operator">+</span> view
+                    <span class="token operator">+</span> <span class="token string">&quot; but the ViewAncestor is attached to &quot;</span> <span class="token operator">+</span> curView<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre></div><p>这里主要是做了一些校验，注释都加上了，政策逻辑还是看 removeViewLocked 的执行。</p> <div class="language-java extra-class"><pre class="language-java"><code># <span class="token class-name">WindowManagerGlobal</span>
+    <span class="token comment">//  即将销毁的View集合</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">ArraySet</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">View</span><span class="token punctuation">&gt;</span></span> mDyingViews <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArraySet</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">View</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">removeViewLocked</span><span class="token punctuation">(</span><span class="token keyword">int</span> index<span class="token punctuation">,</span> <span class="token keyword">boolean</span> immediate<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 获取到ViewRootImpl和View</span>
+        <span class="token class-name">ViewRootImpl</span> root <span class="token operator">=</span> mRoots<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">View</span> view <span class="token operator">=</span> root<span class="token punctuation">.</span><span class="token function">getView</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            root<span class="token punctuation">.</span><span class="token function">getImeFocusController</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">onWindowDismissed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment">// 主流程</span>
+        <span class="token keyword">boolean</span> deferred <span class="token operator">=</span> root<span class="token punctuation">.</span><span class="token function">die</span><span class="token punctuation">(</span>immediate<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>view <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">// 这种父节点为null</span>
+            view<span class="token punctuation">.</span><span class="token function">assignParent</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>deferred<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment">// 加入延迟销毁的集合</span>
+                mDyingViews<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>view<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre></div><p>根据当前的调用链，immediate 传递过来的是 true ，表示立即销毁。</p> <p>流程来到了 ViewRootImpl</p> <div class="language-java extra-class"><pre class="language-java"><code># <span class="token class-name">ViewRootImpl</span>
+
+    <span class="token comment">/**
+     * @param immediate True, do now if not in traversal. False, put on queue and do later.
+     * @return True, request has been queued. False, request has been completed.
+     */</span>
+    <span class="token keyword">boolean</span> <span class="token function">die</span><span class="token punctuation">(</span><span class="token keyword">boolean</span> immediate<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+        <span class="token comment">// 如果是立即销毁则执行doDie</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>immediate <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>mIsInTraversal<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">doDie</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>mIsDrawing<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">// 硬绘处理</span>
+            <span class="token function">destroyHardwareRenderer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token class-name">Log</span><span class="token punctuation">.</span><span class="token function">e</span><span class="token punctuation">(</span>mTag<span class="token punctuation">,</span> <span class="token string">&quot;Attempting to destroy the window while drawing!\n&quot;</span> <span class="token operator">+</span>
+                    <span class="token string">&quot;  window=&quot;</span> <span class="token operator">+</span> <span class="token keyword">this</span> <span class="token operator">+</span> <span class="token string">&quot;, title=&quot;</span> <span class="token operator">+</span> mWindowAttributes<span class="token punctuation">.</span><span class="token function">getTitle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment">// 如果不是立即销毁就发生消息</span>
+        mHandler<span class="token punctuation">.</span><span class="token function">sendEmptyMessage</span><span class="token punctuation">(</span><span class="token constant">MSG_DIE</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre></div><p>当前只看直接销毁的了，延迟销毁的自行了解。</p> <div class="language-java extra-class"><pre class="language-java"><code># <span class="token class-name">ViewRootImpl</span>
+    <span class="token keyword">void</span> <span class="token function">doDie</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 主线程检查</span>
+        <span class="token function">checkThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">synchronized</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>mAdded<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment">// 1. Window的销毁</span>
+                <span class="token function">dispatchDetachedFromWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>mAdded <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>mFirst<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment">// 2. 硬绘处理</span>
+                <span class="token function">destroyHardwareRenderer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token comment">// 如果此时发现了一些参数改变，比如忽然可见了，则执行 finishDrawing 流程。</span>
+                <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token comment">// 非场景场景，先忽略 </span>
+                <span class="token comment">// 3. 应用端的Surface销毁处理</span>
+                <span class="token function">destroySurface</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token punctuation">}</span>
+</code></pre></div><p>继续看Window的移除逻辑</p> <div class="language-java extra-class"><pre class="language-java"><code># <span class="token class-name">ViewRootImpl</span>
+    <span class="token keyword">final</span> <span class="token class-name">IWindowSession</span> mWindowSession<span class="token punctuation">;</span>
+    <span class="token keyword">void</span> <span class="token function">dispatchDetachedFromWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+        <span class="token function">destroyHardwareRenderer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+        <span class="token function">destroySurface</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            <span class="token comment">// 触发 system_server 端移除对应的Window</span>
+            mWindowSession<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>mWindow<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">RemoteException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">Log</span><span class="token punctuation">.</span><span class="token function">e</span><span class="token punctuation">(</span>mTag<span class="token punctuation">,</span> <span class="token string">&quot;RemoteException remove window &quot;</span> <span class="token operator">+</span> mWindow <span class="token operator">+</span> <span class="token string">&quot; in &quot;</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">,</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token punctuation">}</span>
+</code></pre></div><h1 id="_2-system-server-端处理"><a href="#_2-system-server-端处理" class="header-anchor">#</a> 2. system_server 端处理</h1> <p>后续的逻辑就由 system_server 处理，客户端最后调用的是 Session::remove
+这一块的调用链如下：</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token class-name">Session</span><span class="token operator">::</span><span class="token function">remove</span>
+    <span class="token class-name">WindowManagerService</span><span class="token operator">::</span><span class="token function">removeWindow</span>
+        <span class="token class-name">WindowState</span><span class="token operator">::</span><span class="token function">removeIfPossible</span>
+            <span class="token class-name">WindowContainer</span><span class="token operator">::</span><span class="token function">removeIfPossible</span>
+            <span class="token class-name">WindowState</span><span class="token operator">::</span><span class="token function">removeIfPossible</span>
+                <span class="token class-name">WindowState</span><span class="token operator">::</span><span class="token function">removeImmediately</span>
+                    <span class="token class-name">WindowStateAnimator</span><span class="token operator">::</span><span class="token function">destroySurfaceLocked</span>
+                        <span class="token class-name">WindowStateAnimator</span><span class="token operator">::</span><span class="token function">destroySurface</span>  <span class="token operator">--</span> 销毁<span class="token class-name">Surface</span>
+                            <span class="token class-name">WindowSurfaceController</span><span class="token operator">::</span><span class="token function">destroy</span>
+                            <span class="token class-name">SurfaceControl<span class="token punctuation">.</span>Transaction</span><span class="token operator">::</span><span class="token function">remove</span>
+                        <span class="token class-name">WindowState</span><span class="token operator">::</span><span class="token function">setHasSurface</span>           <span class="token operator">--</span> 设置窗口没有<span class="token class-name">Surface</span>
+                        <span class="token constant">NO_SURFACE</span>                           <span class="token operator">--</span>设置窗口状态
+                <span class="token class-name">WindowContainer</span><span class="token operator">::</span><span class="token function">removeImmediately</span>
+                    <span class="token class-name">WindowStateAnimator</span><span class="token operator">::</span><span class="token function">setSurfaceControl</span>
+                    mParent<span class="token operator">::</span><span class="token function">removeChild</span>
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code># <span class="token class-name">Session</span> 
+    <span class="token keyword">final</span> <span class="token class-name">WindowManagerService</span> mService<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">remove</span><span class="token punctuation">(</span><span class="token class-name">IWindow</span> window<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        mService<span class="token punctuation">.</span><span class="token function">removeWindow</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> window<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre></div><p>所以还是由 WindowManagerService 来处理</p> <div class="language-java extra-class"><pre class="language-java"><code># <span class="token class-name">WindowManagerService</span>
+
+    <span class="token keyword">void</span> <span class="token function">removeWindow</span><span class="token punctuation">(</span><span class="token class-name">Session</span> session<span class="token punctuation">,</span> <span class="token class-name">IWindow</span> client<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">synchronized</span> <span class="token punctuation">(</span>mGlobalLock<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">// 拿到对应的WindowState</span>
+            <span class="token class-name">WindowState</span> win <span class="token operator">=</span> <span class="token function">windowForClientLocked</span><span class="token punctuation">(</span>session<span class="token punctuation">,</span> client<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>win <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment">// 主流程</span>
+                win<span class="token punctuation">.</span><span class="token function">removeIfPossible</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token comment">// Remove embedded window map if the token belongs to an embedded window</span>
+            mEmbeddedWindowController<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>client<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+</code></pre></div><p>这里的代码也很简单，找到需要移除的 WindowState ,然后执行 removeIfPossible</p> <div class="language-java extra-class"><pre class="language-java"><code># <span class="token class-name">WindowState</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">void</span> <span class="token function">removeIfPossible</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 1. 调用父类方法，如果有孩子，则执行每个孩子的移除</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">removeIfPossible</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 2. 主流程</span>
+        <span class="token function">removeIfPossible</span><span class="token punctuation">(</span><span class="token boolean">false</span> <span class="token comment">/*keepVisibleDeadWindow*/</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre></div><blockquote><p>后面会出现多个 removeIfPossible ，需要注意执行是哪个类，还有是否有参数</p></blockquote> <p>先看一下调用父类的无参方法，然后再调用自己的方法，传递了 false</p> <h2 id="_2-1-windowcontainer-removeifpossible"><a href="#_2-1-windowcontainer-removeifpossible" class="header-anchor">#</a> 2.1 WindowContainer::removeIfPossible</h2> <p>刚刚看到的 WindowState::removeIfPossible 也是 Override ，说明这个方法是父类定义的， 也就是在 WindowContainer 下。</p> <p>父类方法的定义很简单， 就是遍历需要移除的这个容器下的孩子，然后对孩子也执行一下 WindowContainer::removeIfPossible 。</p> <p>这个其实就是一个递归：执行 removeIfPossible 方法移除容器A的时候，需要先把容器A下面的孩子容器都执行一遍 removeIfPossible</p> <div class="language-java extra-class"><pre class="language-java"><code># <span class="token class-name">WindowContainer</span>
+
+    <span class="token keyword">void</span> <span class="token function">removeIfPossible</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> mChildren<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token operator">--</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">final</span> <span class="token class-name">WindowContainer</span> wc <span class="token operator">=</span> mChildren<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            wc<span class="token punctuation">.</span><span class="token function">removeIfPossible</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre></div><p>孩子容器对这个方法有不同的重写，不过当前分析的还是 WindowState 的内容，继续看后续流程</p> <h2 id="_2-2-windowstate-removeifpossible"><a href="#_2-2-windowstate-removeifpossible" class="header-anchor">#</a> 2.2 WindowState::removeIfPossible</h2> <p>现在看的是 WindowStata 刚刚调用自己内部带参数的 removeIfPossible 方法</p> <div class="language-java extra-class"><pre class="language-java"><code># <span class="token class-name">WindowState</span>
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">removeIfPossible</span><span class="token punctuation">(</span><span class="token keyword">boolean</span> keepVisibleDeadWindow<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        mWindowRemovalAllowed <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token comment">// 关键日志，有堆栈</span>
+        <span class="token class-name">ProtoLog</span><span class="token punctuation">.</span><span class="token function">v</span><span class="token punctuation">(</span><span class="token constant">WM_DEBUG_ADD_REMOVE</span><span class="token punctuation">,</span>
+                <span class="token string">&quot;removeIfPossible: %s callers=%s&quot;</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token class-name">Debug</span><span class="token punctuation">.</span><span class="token function">getCallers</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+        <span class="token comment">// 焦点日志</span>
+        <span class="token class-name">ProtoLog</span><span class="token punctuation">.</span><span class="token function">v</span><span class="token punctuation">(</span><span class="token constant">WM_DEBUG_FOCUS</span><span class="token punctuation">,</span> <span class="token string">&quot;Remove client=%x, surfaceController=%s Callers=%s&quot;</span><span class="token punctuation">,</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">identityHashCode</span><span class="token punctuation">(</span>mClient<span class="token punctuation">.</span><span class="token function">asBinder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            mWinAnimator<span class="token punctuation">.</span>mSurfaceController<span class="token punctuation">,</span>
+            <span class="token class-name">Debug</span><span class="token punctuation">.</span><span class="token function">getCallers</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">final</span> <span class="token keyword">long</span> origId <span class="token operator">=</span> <span class="token class-name">Binder</span><span class="token punctuation">.</span><span class="token function">clearCallingIdentity</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            <span class="token function">disposeInputChannel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            mOnBackInvokedCallbackInfo <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+            <span class="token comment">// app 事务的日志</span>
+            <span class="token class-name">ProtoLog</span><span class="token punctuation">.</span><span class="token function">v</span><span class="token punctuation">(</span><span class="token constant">WM_DEBUG_APP_TRANSITIONS</span><span class="token punctuation">,</span>
+                    <span class="token string">&quot;Remove %s: mSurfaceController=%s mAnimatingExit=%b mRemoveOnExit=%b &quot;</span>
+                            <span class="token operator">+</span> <span class="token string">&quot;mHasSurface=%b surfaceShowing=%b animating=%b app-animation=%b &quot;</span>
+                            <span class="token operator">+</span> <span class="token string">&quot;mWillReplaceWindow=%b mDisplayFrozen=%b callers=%s&quot;</span><span class="token punctuation">,</span>
+                    <span class="token keyword">this</span><span class="token punctuation">,</span> mWinAnimator<span class="token punctuation">.</span>mSurfaceController<span class="token punctuation">,</span> mAnimatingExit<span class="token punctuation">,</span> mRemoveOnExit<span class="token punctuation">,</span>
+                    mHasSurface<span class="token punctuation">,</span> mWinAnimator<span class="token punctuation">.</span><span class="token function">getShown</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                    <span class="token function">isAnimating</span><span class="token punctuation">(</span><span class="token constant">TRANSITION</span> <span class="token operator">|</span> <span class="token constant">PARENTS</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                    mActivityRecord <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> mActivityRecord<span class="token punctuation">.</span><span class="token function">isAnimating</span><span class="token punctuation">(</span><span class="token constant">PARENTS</span> <span class="token operator">|</span> <span class="token constant">TRANSITION</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                    mWillReplaceWindow<span class="token punctuation">,</span>
+                    mWmService<span class="token punctuation">.</span>mDisplayFrozen<span class="token punctuation">,</span> <span class="token class-name">Debug</span><span class="token punctuation">.</span><span class="token function">getCallers</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+            <span class="token comment">// 主流程</span>
+            <span class="token function">removeImmediately</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+        <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+            <span class="token class-name">Binder</span><span class="token punctuation">.</span><span class="token function">restoreCallingIdentity</span><span class="token punctuation">(</span>origId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre></div><p>这里有2个关键的 ProtoLog ，一个是窗口相关，一个是App 事务相关需要注意。 既然当前分析的窗口移除，所以看一下窗口相关的日志打印:</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token class-name">V</span> <span class="token class-name">WindowManager</span><span class="token operator">:</span> removeIfPossible<span class="token operator">:</span> <span class="token class-name">Window</span><span class="token punctuation">{</span><span class="token number">93e12</span>cf u0 com<span class="token punctuation">.</span>android<span class="token punctuation">.</span>systemui<span class="token operator">/</span><span class="token class-name"><span class="token namespace">com<span class="token punctuation">.</span>android<span class="token punctuation">.</span>systemui<span class="token punctuation">.</span>settings<span class="token punctuation">.</span>brightness<span class="token punctuation">.</span></span>BrightnessDialog</span><span class="token punctuation">}</span> callers<span class="token operator">=</span><span class="token class-name"><span class="token namespace">com<span class="token punctuation">.</span>android<span class="token punctuation">.</span>server<span class="token punctuation">.</span>wm<span class="token punctuation">.</span></span>WindowState</span><span class="token punctuation">.</span>removeIfPossible<span class="token operator">:</span><span class="token number">2563</span> <span class="token class-name"><span class="token namespace">com<span class="token punctuation">.</span>android<span class="token punctuation">.</span>server<span class="token punctuation">.</span>wm<span class="token punctuation">.</span></span>WindowManagerService</span><span class="token punctuation">.</span>removeWindow<span class="token operator">:</span><span class="token number">2077</span> <span class="token class-name"><span class="token namespace">com<span class="token punctuation">.</span>android<span class="token punctuation">.</span>server<span class="token punctuation">.</span>wm<span class="token punctuation">.</span></span>Session</span><span class="token punctuation">.</span>remove<span class="token operator">:</span><span class="token number">229</span> <span class="token class-name"><span class="token namespace">android<span class="token punctuation">.</span>view<span class="token punctuation">.</span></span>IWindowSession</span>$<span class="token class-name">Stub</span><span class="token punctuation">.</span>onTransact<span class="token operator">:</span><span class="token number">693</span> <span class="token class-name"><span class="token namespace">com<span class="token punctuation">.</span>android<span class="token punctuation">.</span>server<span class="token punctuation">.</span>wm<span class="token punctuation">.</span></span>Session</span><span class="token punctuation">.</span>onTransact<span class="token operator">:</span><span class="token number">181</span> 
+</code></pre></div><p>这个日志在分析问题的时候也是很重要的，而且还会打印堆栈。</p> <p>除了日志外，就是执行 WindowState::removeImmediately</p> <div class="language-java extra-class"><pre class="language-java"><code># <span class="token class-name">WindowState</span>
+    <span class="token keyword">final</span> <span class="token class-name">WindowStateAnimator</span> mWinAnimator<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">void</span> <span class="token function">removeImmediately</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+        <span class="token comment">// 重点* 1. 移除 surface</span>
+        mWinAnimator<span class="token punctuation">.</span><span class="token function">destroySurfaceLocked</span><span class="token punctuation">(</span><span class="token function">getSyncTransaction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 重点* 2. 父类 </span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">removeImmediately</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+        <span class="token comment">// 获取到当前屏幕</span>
+        <span class="token keyword">final</span> <span class="token class-name">DisplayContent</span> dc <span class="token operator">=</span> <span class="token function">getDisplayContent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+        <span class="token comment">// 移除</span>
+        dc<span class="token punctuation">.</span><span class="token function">getDisplayPolicy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">removeWindowLw</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token punctuation">}</span>
+</code></pre></div><p>这里有2个逻辑</p> <ul><li><ol><li>移除 buff 类型的 Surface</li></ol></li> <li><ol start="2"><li>容器自身相关处理</li></ol></li></ul> <h3 id="_2-2-1-移除-surface-设置窗口状态"><a href="#_2-2-1-移除-surface-设置窗口状态" class="header-anchor">#</a> 2.2.1 移除 Surface，设置窗口状态</h3> <p>WindowStateAnimator 是控制动画和窗口状态的，先看一下 WindowStateAnimator::destroySurfaceLocked 做了什么，这个方法传递了事务进去，看来是要做 Surface 操作了。</p> <div class="language-java extra-class"><pre class="language-java"><code># <span class="token class-name">WindowStateAnimator</span>
+    <span class="token class-name">WindowSurfaceController</span> mSurfaceController<span class="token punctuation">;</span>
+
+    <span class="token keyword">void</span> <span class="token function">destroySurfaceLocked</span><span class="token punctuation">(</span><span class="token class-name">SurfaceControl<span class="token punctuation">.</span>Transaction</span> t<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+        mWin<span class="token punctuation">.</span>mHidden <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+            <span class="token comment">// Surface 销毁日志</span>
+            <span class="token class-name">ProtoLog</span><span class="token punctuation">.</span><span class="token function">i</span><span class="token punctuation">(</span><span class="token constant">WM_SHOW_SURFACE_ALLOC</span><span class="token punctuation">,</span> <span class="token string">&quot;SURFACE DESTROY: %s. %s&quot;</span><span class="token punctuation">,</span>
+                    mWin<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">RuntimeException</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">fillInStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">// 1. 销毁Surface</span>
+            <span class="token function">destroySurface</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">// Don't hide wallpaper if we're deferring the surface destroy</span>
+            <span class="token comment">// because of a surface change.</span>
+            mWallpaperControllerLocked<span class="token punctuation">.</span><span class="token function">hideWallpapers</span><span class="token punctuation">(</span>mWin<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+        <span class="token comment">// 2. 设置当前窗口没有Surface （mHasSurface = false）</span>
+        mWin<span class="token punctuation">.</span><span class="token function">setHasSurface</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>mSurfaceController <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            mSurfaceController<span class="token punctuation">.</span><span class="token function">setShown</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment">// 3. 将当前窗口的Surface置空</span>
+        mSurfaceController <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token comment">// 设置状态为 NO_SURFACE</span>
+        mDrawState <span class="token operator">=</span> <span class="token constant">NO_SURFACE</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre></div><p>标记了3个点，后面2个比较简单，只看销毁 Surface 的处理</p> <div class="language-java extra-class"><pre class="language-java"><code># <span class="token class-name">WindowStateAnimator</span>
+    <span class="token class-name">WindowSurfaceController</span> mSurfaceController<span class="token punctuation">;</span>
+
+    <span class="token keyword">void</span> <span class="token function">destroySurface</span><span class="token punctuation">(</span><span class="token class-name">SurfaceControl<span class="token punctuation">.</span>Transaction</span> t<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Since the SurfaceControl is getting torn down, it's safe to just clean up any</span>
+        <span class="token comment">// pending transactions that were in mPostDrawTransaction, as well.</span>
+        t<span class="token punctuation">.</span><span class="token function">merge</span><span class="token punctuation">(</span>mPostDrawTransaction<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>mSurfaceController <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment">// 重点</span>
+                mSurfaceController<span class="token punctuation">.</span><span class="token function">destroy</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">RuntimeException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">Slog</span><span class="token punctuation">.</span><span class="token function">w</span><span class="token punctuation">(</span><span class="token constant">TAG</span><span class="token punctuation">,</span> <span class="token string">&quot;Exception thrown when destroying surface &quot;</span> <span class="token operator">+</span> <span class="token keyword">this</span>
+                    <span class="token operator">+</span> <span class="token string">&quot; surface &quot;</span> <span class="token operator">+</span> mSurfaceController <span class="token operator">+</span> <span class="token string">&quot; session &quot;</span> <span class="token operator">+</span> mSession <span class="token operator">+</span> <span class="token string">&quot;: &quot;</span> <span class="token operator">+</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+            <span class="token comment">// 一些处理（和刚看到的有些重复，应该是考虑了其他调用场景）</span>
+            mWin<span class="token punctuation">.</span><span class="token function">setHasSurface</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            mSurfaceController <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+            mDrawState <span class="token operator">=</span> <span class="token constant">NO_SURFACE</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code># <span class="token class-name">WindowSurfaceController</span>
+
+    <span class="token keyword">void</span> <span class="token function">destroy</span><span class="token punctuation">(</span><span class="token class-name">SurfaceControl<span class="token punctuation">.</span>Transaction</span> t<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 上层 surface 销毁日志 </span>
+        <span class="token class-name">ProtoLog</span><span class="token punctuation">.</span><span class="token function">i</span><span class="token punctuation">(</span><span class="token constant">WM_SHOW_SURFACE_ALLOC</span><span class="token punctuation">,</span>
+                <span class="token string">&quot;Destroying surface %s called by %s&quot;</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token class-name">Debug</span><span class="token punctuation">.</span><span class="token function">getCallers</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>mSurfaceControl <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment">// 移除 Surface</span>
+                t<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>mSurfaceControl<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">RuntimeException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">Slog</span><span class="token punctuation">.</span><span class="token function">w</span><span class="token punctuation">(</span><span class="token constant">TAG</span><span class="token punctuation">,</span> <span class="token string">&quot;Error destroying surface in: &quot;</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">,</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+            <span class="token function">setShown</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            mSurfaceControl <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre></div><p>WindowStateAnimator::destroySurfaceLocked 方法主要就是移除 Surface ，然后把 WindowState 的状态设置成 NO_SURFACE 。</p> <h3 id="_2-2-1-容器自身相关处理"><a href="#_2-2-1-容器自身相关处理" class="header-anchor">#</a> 2.2.1 容器自身相关处理</h3> <p>再看 父类 WindowContainer::removeImmediately 的处理</p> <div class="language-java extra-class"><pre class="language-java"><code># <span class="token class-name">WindowContainer</span>
+
+    <span class="token keyword">void</span> <span class="token function">removeImmediately</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 1、 解冻处理，确保事务正常的执行</span>
+        <span class="token keyword">final</span> <span class="token class-name">DisplayContent</span> dc <span class="token operator">=</span> <span class="token function">getDisplayContent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>dc <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            mSurfaceFreezer<span class="token punctuation">.</span><span class="token function">unfreeze</span><span class="token punctuation">(</span><span class="token function">getSyncTransaction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment">// 2. 遍历孩子，调用孩子的 removeImmediately （这是一个递归了）</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">!</span>mChildren<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">final</span> <span class="token class-name">E</span> child <span class="token operator">=</span> mChildren<span class="token punctuation">.</span><span class="token function">peekLast</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">// 2.1 递归执行孩子的removeImmediately方法</span>
+            child<span class="token punctuation">.</span><span class="token function">removeImmediately</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">// Need to do this after calling remove on the child because the child might try to</span>
+            <span class="token comment">// remove/detach itself from its parent which will cause an exception if we remove</span>
+            <span class="token comment">// it before calling remove on the child.</span>
+            <span class="token comment">// 2.2 移除孩子</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>mChildren<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>child<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token function">onChildRemoved</span><span class="token punctuation">(</span>child<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>mSurfaceControl <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">// 3. 容器本身的 Surface 相关处理</span>
+            <span class="token function">getSyncTransaction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>mSurfaceControl<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">setSurfaceControl</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            mLastSurfacePosition<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            mLastDeltaRotation <span class="token operator">=</span> <span class="token class-name">Surface</span><span class="token punctuation">.</span><span class="token constant">ROTATION_0</span><span class="token punctuation">;</span>
+            <span class="token comment">// 触发动画</span>
+            <span class="token function">scheduleAnimation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>mOverlayHost <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            mOverlayHost<span class="token punctuation">.</span><span class="token function">release</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            mOverlayHost <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment">// This must happen after updating the surface so that sync transactions can be handled</span>
+        <span class="token comment">// properly.</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>mParent <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">// 4. 把自己从父容器中移除</span>
+            mParent<span class="token punctuation">.</span><span class="token function">removeChild</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment">//  5. 移除监听</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> mListeners<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token operator">--</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            mListeners<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">onRemoved</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre></div><p>可以看到这里又处理了一下 Surface 相关，区别是 2.2.1 处理的是 buff类型的 Surface ,这里处理的是 WindowState 的 Surface 。</p> <p>主要就是做了2件事：</p> <ul><li><ol><li>容器的移除处理</li></ol></li> <li><ol start="2"><li>容器 Surface 的置空（移除）</li></ol></li></ul> <p>system_server 端的流程不算复杂， 基本上就是围绕着移除容器和移除 Surface 这2个事做处理。</p></div></section> <footer class="page-edit"><!----> <!----></footer> <!----> <div class="comments-wrapper"><!----></div></main></div> <!----></div> <ul class="sub-sidebar sub-sidebar-wrapper" style="width:12rem;" data-v-b57cc07c data-v-7dd95ae2><li class="level-2" data-v-b57cc07c><a href="/biubiubiuBlog/blog/wms/%E7%AA%97%E5%8F%A3%E7%9A%84%E7%A7%BB%E9%99%A4-removeWindow.html#_2-1-windowcontainer-removeifpossible" class="sidebar-link reco-side-_2-1-windowcontainer-removeifpossible" data-v-b57cc07c>2.1 WindowContainer::removeIfPossible</a></li><li class="level-2" data-v-b57cc07c><a href="/biubiubiuBlog/blog/wms/%E7%AA%97%E5%8F%A3%E7%9A%84%E7%A7%BB%E9%99%A4-removeWindow.html#_2-2-windowstate-removeifpossible" class="sidebar-link reco-side-_2-2-windowstate-removeifpossible" data-v-b57cc07c>2.2 WindowState::removeIfPossible</a></li><li class="level-3" data-v-b57cc07c><a href="/biubiubiuBlog/blog/wms/%E7%AA%97%E5%8F%A3%E7%9A%84%E7%A7%BB%E9%99%A4-removeWindow.html#_2-2-1-移除-surface-设置窗口状态" class="sidebar-link reco-side-_2-2-1-移除-surface-设置窗口状态" data-v-b57cc07c>2.2.1 移除 Surface，设置窗口状态</a></li><li class="level-3" data-v-b57cc07c><a href="/biubiubiuBlog/blog/wms/%E7%AA%97%E5%8F%A3%E7%9A%84%E7%A7%BB%E9%99%A4-removeWindow.html#_2-2-1-容器自身相关处理" class="sidebar-link reco-side-_2-2-1-容器自身相关处理" data-v-b57cc07c>2.2.1 容器自身相关处理</a></li></ul></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div><div class="click-effects-wrap" data-v-a3fc49fc></div><div class="kanbanniang" data-v-5775ee02><div class="banniang-container" style="display:;" data-v-5775ee02><div class="messageBox" style="right:68px;bottom:190px;display:none;" data-v-5775ee02>
+      欢迎来到 我的博客
+    </div> <div class="operation" style="right:90px;bottom:40px;display:none;" data-v-5775ee02><i class="kbnfont kbn-ban-home ban-home" data-v-5775ee02></i> <i class="kbnfont kbn-ban-message message" data-v-5775ee02></i> <i class="kbnfont kbn-ban-close close" data-v-5775ee02></i> <a target="_blank" href="https://vuepress-theme-reco.recoluan.com/views/plugins/kanbanniang.html" data-v-5775ee02><i class="kbnfont kbn-ban-info info" data-v-5775ee02></i></a> <i class="kbnfont kbn-ban-theme skin" style="display:none;" data-v-5775ee02></i></div> <canvas id="banniang" width="135" height="300" class="live2d" style="position:fixed;right:65px;bottom:0px;opacity:0.8;z-index:99999;" data-v-5775ee02></canvas></div> <div class="showBanNiang" style="display:none;" data-v-5775ee02>
+    看板娘
+  </div></div></div></div>
+    <script src="/biubiubiuBlog/assets/js/app.20a7e9f3.js" defer></script><script src="/biubiubiuBlog/assets/js/7.e43da086.js" defer></script><script src="/biubiubiuBlog/assets/js/2.dabce1ab.js" defer></script><script src="/biubiubiuBlog/assets/js/1.219a1c74.js" defer></script><script src="/biubiubiuBlog/assets/js/89.a733d5ac.js" defer></script>
+  </body>
+</html>
